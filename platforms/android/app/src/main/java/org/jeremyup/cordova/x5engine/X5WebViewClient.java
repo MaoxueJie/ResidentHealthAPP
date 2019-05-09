@@ -72,7 +72,9 @@ public class X5WebViewClient extends WebViewClient {
      */
 	@Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        return parentEngine.client.onNavigationAttempt(url);
+        //return parentEngine.client.onNavigationAttempt(url);
+        view.loadUrl(url);
+        return true;
     }
 
     /**
