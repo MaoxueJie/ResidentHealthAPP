@@ -93,7 +93,7 @@ public class X5WebView extends WebView implements CordovaWebViewEngine.EngineVie
         }
         return super.dispatchKeyEvent(event);
     }
-
+    /*
     @Override
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
         boolean ret = super.drawChild(canvas, child, drawingTime);
@@ -117,5 +117,5 @@ public class X5WebView extends WebView implements CordovaWebViewEngine.EngineVie
         canvas.drawText(Build.MODEL, 10, 200, paint);
         canvas.restore();
         return ret;
-    }
+    }*/
 }
