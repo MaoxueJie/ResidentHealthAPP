@@ -19,14 +19,7 @@
 
 package com.breeze.health;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-
 import org.apache.cordova.*;
 
 public class MainActivity extends CordovaActivity
@@ -43,51 +36,6 @@ public class MainActivity extends CordovaActivity
         }
 
         // Set by <content src="index.html" /> in config.xml
-        loadUrl("http://ehealth.drshuo.com/cfd/home");
+        loadUrl(launchUrl);
     }
-    @Override
-    protected void createViews() {
-        //Why are we setting a constant as the ID? This should be investigated
-        //appView.getView().setId(100);
-        appView.getView().setLayoutParams(new FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
-
-        setContentView(R.layout.activity_main);
-        FrameLayout layoutView = findViewById(R.id.main_view);
-        layoutView.addView(appView.getView());
-
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        if (preferences.contains("BackgroundColor")) {
-            try {
-                int backgroundColor = preferences.getInteger("BackgroundColor", Color.BLACK);
-                // Background of activity:
-                appView.getView().setBackgroundColor(backgroundColor);
-            }
-            catch (NumberFormatException e){
-                e.printStackTrace();
-            }
-        }
-
-        appView.getView().requestFocusFromTouch();
-    }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    loadUrl("http://ehealth.drshuo.com/cfd/home");
-                    return true;
-                case R.id.navigation_me:
-                    loadUrl("http://ehealth.drshuo.com/cfd/base");
-                    return true;
-            }
-            return false;
-        }
-    };
 }

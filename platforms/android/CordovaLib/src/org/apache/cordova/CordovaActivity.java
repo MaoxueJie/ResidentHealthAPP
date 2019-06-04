@@ -34,7 +34,6 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,7 +74,7 @@ import android.widget.FrameLayout;
  * deprecated in favor of the config.xml file.
  *
  */
-public class CordovaActivity extends AppCompatActivity {
+public class CordovaActivity extends Activity {
     public static String TAG = "CordovaActivity";
 
     // The webview for our app
