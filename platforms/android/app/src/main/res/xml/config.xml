@@ -22,4 +22,5 @@
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="webView" value="org.jeremyup.cordova.x5engine.X5WebViewEngine" />
+    <preference name="BackgroundColor" value="0xFF2B9F94" />
 </widget>
