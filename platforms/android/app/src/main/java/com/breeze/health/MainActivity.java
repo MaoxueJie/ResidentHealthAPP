@@ -19,6 +19,8 @@
 
 package com.breeze.health;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
@@ -34,8 +36,11 @@ public class MainActivity extends CordovaActivity
         if (extras != null && extras.getBoolean("cdvStartInBackground", false)) {
             moveTaskToBack(true);
         }
-
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
+
+        Resources resources = getApplicationContext().getResources();
+        Drawable drawable = resources.getDrawable(R.drawable.welcome);
+        appView.getView().setBackground(drawable);
     }
 }
