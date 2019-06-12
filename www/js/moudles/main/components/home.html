@@ -1,0 +1,41 @@
+<div data-page="home" class="page">
+<!--  
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left"><a href="#" class="link icon-only"><i class="icon icon-back"></i></a></div>
+    <div class="center">Color Themes</div>
+    <div class="right"><a href="#" class="link icon-only"><i class="icon icon-bars"></i></a></div>
+  </div>
+</div>
+-->
+<div class="toolbar toolbar-bottom tabbar-labels" style="height:45px">
+    <div class="toolbar-inner">
+        <a href="#tab1" class="tab-link tab-link-active" style="padding-top: 2px;padding-bottom: 6px;">
+            <i class="f7-icons size-22">home_fill</i>
+            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:2px">首页</span>
+        </a>
+        <a href="#tab2" class="tab-link" style="padding-top: 2px;padding-bottom: 6px;">
+            <i class="f7-icons size-22">
+            	person_round
+            	<!-- 
+            	<span class="badge bg-red" style="left:75%;top:0px;">5</span>
+            	-->
+            </i>
+            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:2px">我的</span>
+        </a>
+	</div>
+</div>
+<!-- 
+<a href="#" class="floating-button"><i class="icon icon-plus"></i></a>
+ -->
+<div class="tabs">
+		<div id="tab1" v-on:scroll.passive="onScroll" @tab:show="onShowTab"  class="tab tab-active page-content">
+			  <div class="content-block" style="margin:0;padding:0">
+			  	啊啊啊啊
+			  </div>
+		</div>
+		<div id="tab2" v-on:scroll.passive="onScroll" @tab:show="onShowTab"  class="tab page-content">
+			巴巴爸爸
+		</div>
+	</div>
+</div>
