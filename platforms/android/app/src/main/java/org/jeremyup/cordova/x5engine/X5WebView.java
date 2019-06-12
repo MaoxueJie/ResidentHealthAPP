@@ -21,6 +21,7 @@ package org.jeremyup.cordova.x5engine;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -66,6 +67,7 @@ public class X5WebView extends WebView implements CordovaWebViewEngine.EngineVie
         if (this.chromeClient == null) {
             setWebChromeClient(new X5WebChromeClient(parentEngine));
         }
+        this .setBackgroundColor((Color.parseColor("#009688")));
     }
 
     @Override
@@ -117,5 +119,5 @@ public class X5WebView extends WebView implements CordovaWebViewEngine.EngineVie
         canvas.drawText(Build.MODEL, 10, 200, paint);
         canvas.restore();
         return ret;
-    }
+    }/**/
 }

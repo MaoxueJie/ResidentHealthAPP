@@ -12,7 +12,22 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.breeze.health"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.breeze.health"
+    },
+    "jpush-phonegap-plugin": {
+      "APP_KEY": "396299d2c931fce6152b9bdf",
+      "CHANNEL": "developer-default",
+      "PACKAGE_NAME": "com.breeze.health"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.breeze.health"
+    },
+    "cordova-plugin-jcore": {
+      "PACKAGE_NAME": "com.breeze.health"
+    }
+  }
 }

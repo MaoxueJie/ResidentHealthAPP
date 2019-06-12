@@ -4,7 +4,13 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name>ResidentHealth</name>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="JPushPlugin">
+        <param name="android-package" value="cn.jiguang.cordova.push.JPushPlugin" />
+    </feature>
+    <name>居民e健康-医生版</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
@@ -22,5 +28,4 @@
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="webView" value="org.jeremyup.cordova.x5engine.X5WebViewEngine" />
-    <preference name="BackgroundColor" value="0xFF2B9F94" />
 </widget>

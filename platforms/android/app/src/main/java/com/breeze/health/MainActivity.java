@@ -19,28 +19,45 @@
 
 package com.breeze.health;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import com.tencent.smtt.sdk.QbSdk;
+
 import org.apache.cordova.*;
 
 public class MainActivity extends CordovaActivity
 {
     @Override
+    protected void init() {
+        long time = 0;
+        while(true){
+            if (QbSdk.isTbsCoreInited() || time>5000){
+                break;
+            }
+            try {
+                java.lang.Thread.sleep(1000);
+            }catch (Throwable e){}
+            time += 1000;
+        }
+        super.init();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
 
+        super.onCreate(savedInstanceState);
         // enable Cordova apps to be started in the background
         Bundle extras = getIntent().getExtras();
         if (extras != null && extras.getBoolean("cdvStartInBackground", false)) {
             moveTaskToBack(true);
         }
-        // Set by <content src="index.html" /> in config.xml
+        setStatusBar();
         loadUrl(launchUrl);
+    }
 
-        Resources resources = getApplicationContext().getResources();
-        Drawable drawable = resources.getDrawable(R.drawable.welcome);
-        appView.getView().setBackground(drawable);
+    protected void setStatusBar() {
+        StatusBarUtil.setTransparent(this);
+        //StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
     }
 }

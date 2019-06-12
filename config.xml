@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.breeze.health" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ResidentHealth</name>
+    <name>居民e健康-医生版</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
