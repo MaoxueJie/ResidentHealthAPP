@@ -1,13 +1,12 @@
 <div data-page="home" class="page">
-<!--  
+  
 <div class="navbar">
   <div class="navbar-inner">
-    <div class="left"><a href="#" class="link icon-only"><i class="icon icon-back"></i></a></div>
-    <div class="center">Color Themes</div>
-    <div class="right"><a href="#" class="link icon-only"><i class="icon icon-bars"></i></a></div>
+    <div class="left"></div>
+    <div class="center title">居民e健康</div>
+    <div class="right"></div>
   </div>
 </div>
--->
 <div class="toolbar toolbar-bottom tabbar-labels" style="height:45px">
     <div class="toolbar-inner">
         <a href="#tab1" class="tab-link tab-link-active" style="padding-top: 2px;padding-bottom: 6px;">
@@ -30,12 +29,49 @@
  -->
 <div class="tabs">
 		<div id="tab1" v-on:scroll.passive="onScroll" @tab:show="onShowTab"  class="tab tab-active page-content">
-			  <div class="content-block" style="margin:0;padding:0">
-			  	啊啊啊啊
-			  </div>
+			
 		</div>
 		<div id="tab2" v-on:scroll.passive="onScroll" @tab:show="onShowTab"  class="tab page-content">
-			巴巴爸爸
+			<div class="settings-view">
+				<div class="list user-profile">
+					<ul>
+						<li>
+							<a href="/profile/" class="item-link">
+								<div class="item-content">
+									<div class="item-media">
+									<img  class="avatar" src="img/head.png">
+									</div>
+									<div class="item-inner">
+										<div class="detail">
+											<div class="name">刘医生</div> 
+											<div class="location">
+												<span>单位: </span> 
+												<span class="">北京回龙观社区医院</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div> 
+				<div class="list">
+					<ul>
+						<li>
+							<a v-on:click="$router.loadMoudle('login')" class="item-link">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:10px">info_round_fill</i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">关于我们</div>
+									</div>
+								</div>
+							</a>
+						</li>
+					 </ul>
+				</div> 
+			</div>
 		</div>
 	</div>
 </div>
