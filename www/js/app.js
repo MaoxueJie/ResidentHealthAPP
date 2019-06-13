@@ -15,7 +15,6 @@ define(["./moudles/main/index","./settings"],function(){
    router.addRoutes(main);
    router.push("/")
    
-   
    document.addEventListener('deviceReady',function(){
        window.JPush.init();
        window.JPush.isPushStopped(function (result) {
@@ -85,7 +84,7 @@ define(["./moudles/main/index","./settings"],function(){
 		        //routes: router,
 		        // App Name
 		        name: 'health',
-		        theme: 'md',
+		        theme: 'ios',
 		        // App id
 		        id: 'com.breeze.health',
 		        panels3d: {

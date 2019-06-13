@@ -1,0 +1,179 @@
+#app .navbar {
+	--f7-navbar-height:60px;
+    background-color: var(--f7-theme-color);
+}
+#app .navbar .navbar-inner{
+	margin-top:16px;
+}
+#app .navbar .navbar-inner .title {
+    color: #fff;
+    font-weight: 500!important;
+    font-size:18px;
+}
+
+.settings-view{
+	margin-top:15px;
+}
+.settings-view .list {
+    margin:0;
+    margin-top:10px;
+}
+.settings-view .user-profile .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+}
+
+.layout-white .login-screen-content, .layout-white .page, .layout-white .panel, .page.layout-white, .panel.layout-white {
+    background-color: #fff;
+    color: #000;
+}
+
+.list-block.inset {
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 7px;
+}
+
+.list-block {
+    margin:10px 0;
+    font-size: 17px;
+}
+
+.list-block .item-content {
+    box-sizing: border-box;
+    padding-left: 15px;
+    min-height: 44px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+   
+}
+
+.list-block .item-inner {
+    padding-right: 15px;
+    position: relative;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 7px;
+    min-height: 44px;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    overflow: hidden;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -ms-flex-item-align: stretch;
+    -webkit-align-self: stretch;
+    align-self: stretch;
+}
+
+.layout-white .list-block.inset ul, .list-block.layout-white.inset ul {
+    background: #fafafa;
+}
+
+.layout-white .list-block ul, .list-block.layout-white ul {
+    background: #fff;
+}
+.list-block.inset ul {
+    border-radius: 7px;
+}
+.list-block ul {
+    background: #fff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.list-block li {
+    box-sizing: border-box;
+    position: relative;
+}
+.list-block li + li{
+    border-top: 1px solid rgba(70, 80, 90, 0.1);
+}
+
+
+
+.list-block .item-title.label {
+    width: 20%;
+    -webkit-flex-shrink: 0;
+    -ms-flex: 0 0 auto;
+    flex-shrink: 0;
+}
+.list-block .item-title.label {
+    vertical-align: top;
+    color: #2B9F94;
+}
+.list-block .item-title {
+    -webkit-flex-shrink: 1;
+    -ms-flex: 0 1 auto;
+    flex-shrink: 1;
+    min-width: 0;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.list-block .item-title.label+.item-input {
+    margin-left: 5px;
+}
+
+.list-block .item-input {
+    width: 100%;
+    margin-top: -8px;
+    margin-bottom: -7px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    -webkit-flex-shrink: 1;
+    -ms-flex: 0 1 auto;
+    flex-shrink: 1;
+}
+
+.button.button-big {
+    font-size: 17px;
+    height: 44px;
+    line-height: 42px;
+}
+
+.content-block {
+    margin: 35px 0;
+    padding: 0 15px;
+    color: #6d6d72;
+    box-sizing: border-box;
+}
+
+.login_banner{
+	display: block;
+	width: 100%;
+}
+
+.login_title{
+	text-align: center;
+	padding-top: .5rem;
+	line-height: 40px;
+    font-size: 20px;
+    color: #2B9F94;
+}
