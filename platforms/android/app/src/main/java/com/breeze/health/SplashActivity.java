@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 /**
  * 
@@ -62,7 +63,18 @@ public class SplashActivity extends Activity {
 
 		// 取得相应的值，如果没有该值，说明还未写入，用true作为默认值
 		isFirstIn = preferences.getBoolean("isFirstIn", true);
-		mHandler.sendEmptyMessageDelayed(GO_HOME, SPLASH_DELAY_MILLIS);
+		Log.i("------------",isFirstIn+"");
+		if (isFirstIn) {
+
+			SharedPreferences.Editor editor = preferences.edit();
+			// 存入数据
+			editor.putBoolean("isFirstIn", false);
+			// 提交修改
+			editor.commit();
+			mHandler.sendEmptyMessageDelayed(GO_HOME, 3000);
+		}
+		else
+            mHandler.sendEmptyMessageDelayed(GO_HOME, 100);
 
 	}
 

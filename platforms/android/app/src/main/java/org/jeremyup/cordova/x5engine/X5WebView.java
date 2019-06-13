@@ -20,15 +20,10 @@
 package org.jeremyup.cordova.x5engine;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
-import android.view.View;
 
-import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
@@ -95,7 +90,7 @@ public class X5WebView extends WebView implements CordovaWebViewEngine.EngineVie
         }
         return super.dispatchKeyEvent(event);
     }
-
+    /*
     @Override
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
         boolean ret = super.drawChild(canvas, child, drawingTime);
@@ -119,5 +114,5 @@ public class X5WebView extends WebView implements CordovaWebViewEngine.EngineVie
         canvas.drawText(Build.MODEL, 10, 200, paint);
         canvas.restore();
         return ret;
-    }/**/
+    }*/
 }

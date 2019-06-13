@@ -10,7 +10,7 @@
     <feature name="JPushPlugin">
         <param name="android-package" value="cn.jiguang.cordova.push.JPushPlugin" />
     </feature>
-    <name>居民e健康-医生版</name>
+    <name>居民e健康</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
