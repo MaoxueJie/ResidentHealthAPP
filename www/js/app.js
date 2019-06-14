@@ -39,7 +39,8 @@ define(["./moudles/main/index","./settings"],function(){
 					next()
 				}else
 				{
-					next({ path: '/login' });
+					//next({ path: '/login' });
+					router.replace("/login")
 				}
 		   }
 	   }else

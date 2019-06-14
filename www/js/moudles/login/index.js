@@ -13,10 +13,10 @@ define(["text!./view.html","api/api"],function(view,{login}){
 				  let path = localStorage.getItem("last");
 				  if (path)
 				  {
-					  this.$router.push(path)
+					  this.$router.replace(path)
 				  }else
 				  {
-					  this.$router.push("/");
+					  this.$router.replace("/");
 				  }
 			  }else
 			  {
