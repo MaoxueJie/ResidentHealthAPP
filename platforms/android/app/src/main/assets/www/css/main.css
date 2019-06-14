@@ -56,6 +56,7 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+   
 }
 
 .list-block .item-inner {
@@ -108,6 +109,11 @@
     box-sizing: border-box;
     position: relative;
 }
+.list-block li + li{
+    border-top: 1px solid rgba(70, 80, 90, 0.1);
+}
+
+
 
 .list-block .item-title.label {
     width: 20%;
@@ -117,6 +123,7 @@
 }
 .list-block .item-title.label {
     vertical-align: top;
+    color: #2B9F94;
 }
 .list-block .item-title {
     -webkit-flex-shrink: 1;

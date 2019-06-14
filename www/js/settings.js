@@ -8,7 +8,9 @@ const settingsObject = {
 		},
 	},
 	paths: {
-		"text": "lib/text"
+		"text": "lib/text",
+		"axios": "lib/axios.min",
+		"qs": "lib/qs"
 	}
 };
 
