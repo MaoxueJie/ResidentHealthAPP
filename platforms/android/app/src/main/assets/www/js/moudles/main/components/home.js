@@ -1,4 +1,4 @@
-define(["lib/text!./home.html"],function(view){
+define(["lib/text!./home.html","api/api"],function(view, {test}){
 	
 	var methods = {
 	   route(name){
@@ -13,6 +13,11 @@ define(["lib/text!./home.html"],function(view){
        },
        onShowTab(e){
     	   e.target.scrollTop =  this.offsetTops[e.target.id]|0;
+       },
+       test(){
+    	   test().then(res=>{
+    		   console.log(res);
+    	   });
        }
 	}
 	

@@ -2,32 +2,37 @@
 	<div class="page-content">
 		<img class="login_banner" src="img/login_banner.png">
 		<h3 class="login_title">用户登录</h3>
-		<form class="list-block inset" id="app-framework-login-screen">
-			<ul>
-				<li class="">
-					<div class="item-content">
-						<div class="item-inner">
-							<div class="item-title label">账号</div> 
-							<div class="item-input">
-								<input type="email" placeholder="" value="" class="">
-							</div>
-						</div>
-					</div>
-				</li> 
-				<li class="">
-					<div class="item-content">
-						<div class="item-inner">
-							<div class="item-title label">密码</div> 
-							<div class="item-input">
-								<input type="password" placeholder="" value="" class="">
-							</div>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</form> 
+		<div class="list inline-labels no-hairlines-md" style="margin-top:5px">
+		  <ul>
+		    <li class="item-content item-input">
+		      <div class="item-media">
+		        <i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:5px">person</i>
+		      </div>
+		      <div class="item-inner" style="margin-left:5px">
+		        <div class="item-title item-label" style="width:20%;">账户</div>
+		        <div class="item-input-wrap">
+		          <input v-model="user" type="text" placeholder="请填写手机号">
+		          <span class="input-clear-button"></span>
+		        </div>
+		      </div>
+		    </li>
+		    <li class="item-content item-input">
+		      <div class="item-media">
+		        <i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:5px">lock_fill</i>
+		      </div>
+		      <div class="item-inner" style="margin-left:5px">
+		        <div class="item-title item-label" style="width:20%;">密码</div>
+		        <div class="item-input-wrap">
+		          <input v-model="password" :type="eye=='eye'?'password':'text'" placeholder="请填写密码">
+		          <i class="f7-icons" v-on:click="eyeClick" style="font-size:18px;position: absolute;top: calc(var(--f7-input-height)/ 2);margin-top: calc(-1 * var(--f7-input-clear-button-size)/ 2);right:20px">{{eye}}</i>
+		          <span class="input-clear-button"></span>
+		        </div>
+		      </div>
+		    </li>
+		    </ul>
+		 </div>
 		<div class="content-block">
-			<a href="#" class="color-teal button-fill button-big button-raised button">登录</a>
+			<a href="#" v-on:click="login" class="color-teal button-fill button-big button-raised button">登录</a>
 		</div> 
 	</div>
 </div>
