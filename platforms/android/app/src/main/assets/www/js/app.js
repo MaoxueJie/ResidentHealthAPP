@@ -49,6 +49,8 @@ define(["./moudles/main/index","./settings"],function(){
 	   }
 		
    });
+   
+   
    var main = require("./moudles/main/index");
    router.addRoutes(main);
    router.push("/")

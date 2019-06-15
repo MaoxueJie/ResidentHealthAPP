@@ -28,5 +28,7 @@ define(["lib/axios.min","lib/qs"],function(axios,Qs){
 	
 	const test = params => { return axios.get(`${base}test`, params).then(res => res);};
 	
-	return {login,test};
+	const getUser = params => { return axios.get(`${base}getUser`, params).then(res => res);};
+	
+	return {login,getUser,test};
 });

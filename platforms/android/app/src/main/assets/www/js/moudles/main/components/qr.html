@@ -1,0 +1,21 @@
+<div  class="page">
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <div class="left">
+	    	<a v-on:click="back" href="#" class="link color-white">
+              <i class="icon icon-back color-white"></i>
+              <span>关闭</span>
+            </a>
+	    </div>
+	    <div class="center title">我的二维码</div>
+	    <div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	  </div>
+	</div>
+	<div class="page-content"> 
+		<div class="content-block">
+			<p>
+				<img :src="qr" style="width:100%">
+			</p>
+		</div>
+    </div>
+</div>
