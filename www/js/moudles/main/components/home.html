@@ -10,17 +10,17 @@
 <div class="toolbar toolbar-bottom tabbar-labels" style="height:45px">
     <div class="toolbar-inner">
         <a href="#tab1" class="tab-link tab-link-active" style="padding-top: 2px;padding-bottom: 6px;">
-            <i class="icon icon-fill f7-icons size-22">home_fill</i>
-            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">首页</span>
+            <i class="icon icon-fill f7-icons size-22">persons</i>
+            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">我的居民</span>
         </a>
         <a href="#tab2" class="tab-link" style="padding-top: 2px;padding-bottom: 6px;">
             <i class="icon icon-fill f7-icons size-22">
-            	person_round
+            	gear
             	<!--  
             	<span class="badge color-red" >5</span>
             	-->
             </i>
-            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">我的</span>
+            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">个人设置</span>
         </a>
 	</div>
 </div>
@@ -43,10 +43,14 @@
 									</div>
 									<div class="item-inner">
 										<div class="detail">
-											<div class="name">刘医生</div> 
+											<div class="name">{{name}}</div> 
+											<div class="location">
+												<span>职称: </span> 
+												<span class="">{{jobTitle}}</span>
+											</div>
 											<div class="location">
 												<span>单位: </span> 
-												<span class="">北京回龙观社区医院</span>
+												<span class="">{{unit}}</span>
 											</div>
 										</div>
 									</div>
@@ -57,14 +61,39 @@
 				</div> 
 				<div class="list">
 					<ul>
-						<li>
-							<a v-on:click="test" class="item-link">
+					   
+					    <li>
+							<a v-on:click="myQr" class="item-link pb">
 								<div class="item-content">
 									<div class="item-media">
-										<i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:10px">info_round_fill</i>
+										<i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:10px">info_round</i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">我的二维码</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a v-on:click="about" class="item-link">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:10px">info_round</i>
 									</div>
 									<div class="item-inner">
 										<div class="item-title">关于我们</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a v-on:click="logout" class="item-link">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="f7-icons" style="color:#fc3;font-size:20px;margin-top:10px">exit_round</i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">安全退出</div>
 									</div>
 								</div>
 							</a>
