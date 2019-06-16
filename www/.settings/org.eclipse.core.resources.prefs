@@ -1,5 +1,11 @@
 eclipse.preferences.version=1
 encoding//css/main.css=UTF-8
+encoding//js/moudles/detail/components/base.html=UTF-8
+encoding//js/moudles/detail/components/living.html=UTF-8
+encoding//js/moudles/detail/components/phy.html=UTF-8
+encoding//js/moudles/detail/components/psy.html=UTF-8
+encoding//js/moudles/detail/components/sick.html=UTF-8
+encoding//js/moudles/detail/components/tcm.html=UTF-8
 encoding//js/moudles/detail/index.js=UTF-8
 encoding//js/moudles/detail/view.html=UTF-8
 encoding//js/moudles/login/view.html=UTF-8
