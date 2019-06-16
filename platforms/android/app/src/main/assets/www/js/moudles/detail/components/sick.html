@@ -1,0 +1,19 @@
+<div  class="page">
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <div class="left">
+	    	<a v-on:click="back" href="#" class="link color-white">
+              <i class="icon icon-back color-white"></i>
+              <span>返回</span>
+            </a>
+	    </div>
+	    <div class="center title">健康状况</div>
+	    <div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	  </div>
+	</div>
+	<div class="page-content"> 
+		<div class="content-block">
+			{{$route.query.userId}}
+		</div>
+    </div>
+</div>
