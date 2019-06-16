@@ -9,6 +9,8 @@ define(["text!./view.html","api/api"],function(view,{login}){
 			  console.log(res);
 			  if (res.data.success)
 			  {
+				  this.user = "";
+				  this.password = "";
 				  localStorage.setItem("token", res.data.data.token);
 				  let path = localStorage.getItem("last");
 				  if (path)

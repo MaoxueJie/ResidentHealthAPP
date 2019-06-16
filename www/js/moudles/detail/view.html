@@ -1,0 +1,101 @@
+<div  class="page">
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <div class="left">
+	    	<a @touchstart="back" href="#" class="link color-white">
+              <i class="icon icon-back color-white"></i>
+              <span>返回</span>
+            </a>
+	    </div>
+	    <div class="center title">{{$route.query.mobile}}</div>
+	    <div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	  </div>
+	</div>
+	<div class="page-content" > 
+		 <div class="settings-view">
+				<div class="list user-profile">
+					<ul>
+						<li>
+							<a v-on:click="info($route.query.userId)" class="item-link">
+								<div class="item-content">
+									<div class="item-media" style="margin-left:2px;">
+										<i class="fa fa-mobile" style="font-size:40px;"></i>
+									</div>
+									<div class="item-inner">
+										<div class="detail">
+											<div class="name">基本信息</div> 
+										</div>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div> 
+				<div class="list">
+					<ul>
+						<li>
+							<a v-on:click="living($route.query.userId)" class="item-link pb">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="fa fa-beer" style="font-size:20px;"></i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">生活习惯</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a v-on:click="phy($route.query.userId)" class="item-link pb">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="fa fa-heartbeat" style="font-size:20px;"></i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">生理指标</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a v-on:click="sick($route.query.userId)" class="item-link pb">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="fa fa-medkit" style="font-size:20px;"></i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">健康状况</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a v-on:click="psy($route.query.userId)" class="item-link pb">
+								<div class="item-content">
+									<div class="item-media" style="margin-left:3px;">
+										<i class="fa fa-user-md" style="font-size:20px;"></i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">情绪认知</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a v-on:click="tcm($route.query.userId)" class="item-link pb">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="fa fa-leaf" style="font-size:20px;"></i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">中医体质</div>
+									</div>
+								</div>
+							</a>
+						</li>
+					
+					 </ul>
+				</div> 
+		 </div>
+    </div>
+</div>
