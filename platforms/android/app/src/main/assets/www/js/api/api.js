@@ -30,5 +30,25 @@ define(["lib/axios.min","lib/qs"],function(axios,Qs){
 	
 	const getUser = params => { return axios.get(`${base}getUser`, params).then(res => res);};
 	
-	return {login,getUser,test};
+	const changePwd = params => { return axios.post(`${base}changePwd`, params,
+	   {
+			transformRequest: [function (data) {
+			    data = Qs.stringify(data)
+			    return data;
+		    }]
+	   }
+	  ).then(res => res);
+    };
+    
+    const getSicks = params => { return axios.post(`${base}getSicks`, params,
+       {
+			transformRequest: [function (data) {
+			    data = Qs.stringify(data)
+			    return data;
+		    }]
+	   }
+	  ).then(res => res);
+	};
+	
+	return {login,getUser,changePwd,getSicks,test};
 });

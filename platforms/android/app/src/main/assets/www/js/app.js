@@ -11,7 +11,7 @@ define(["./moudles/main/index","./settings"],function(){
 		]
    });
    
-   router.loadMoudle = function(moudleName){
+   router.loadMoudle = function(moudleName,query,param){
 		require(["moudles/"+moudleName+"/index"],function(moudle){
 			  if (moudle instanceof Array)
 			  {
@@ -20,7 +20,7 @@ define(["./moudles/main/index","./settings"],function(){
 			  {
 				  router.addRoutes([{path:"/"+moudleName,component:moudle}])
 			  }
-			  router.push('/'+moudleName)
+			  router.push({path:'/'+moudleName,query:query,param:param})
 		})
    };
    
@@ -45,7 +45,7 @@ define(["./moudles/main/index","./settings"],function(){
 		   }
 	   }else
 	   {
-			router.loadMoudle(to.path.replace("/",""));
+			router.loadMoudle(to.path.replace("/",""),to.query,to.param);
 	   }
 		
    });
