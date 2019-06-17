@@ -12,8 +12,69 @@
 	  </div>
 	</div>
 	<div class="page-content"> 
-		<div class="content-block">
-			{{$route.query.userId}}
-		</div>
+		<form class="list" style="margin-top:18px">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">患有以下疾病</div>
+							<div class="item-input-wrap">
+								{{sick.sicksStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">服用过药物</div>
+							<div class="item-input-wrap">
+								{{sick.drugsStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">您的家人是否患有高血压</div>
+							<div class="item-input-wrap">
+								{{sick.highBloodPressureHistoryStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">您的家人是否患有糖尿病</div>
+							<div class="item-input-wrap">
+								{{sick.diabetesHistoryStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">您的家人是否患有冠心病</div>
+							<div class="item-input-wrap">
+								{{sick.coronaryHeartDiseaseHistoryStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">您的家人是否患有脑卒中（脑出血或脑梗死）</div>
+							<div class="item-input-wrap">
+								{{sick.cerebralApoplexyHistoryStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
     </div>
 </div>

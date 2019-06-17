@@ -26,9 +26,9 @@ define(["lib/axios.min","lib/qs"],function(axios,Qs){
 	  ).then(res => res);
 	};
 	
-	const test = params => { return axios.get(`${base}test`, params).then(res => res);};
+	const test = params => { return axios.get(`${base}test`, {params:params}).then(res => res);};
 	
-	const getUser = params => { return axios.get(`${base}getUser`, params).then(res => res);};
+	const getUser = params => { return axios.get(`${base}getUser`, {params:params}).then(res => res);};
 	
 	const changePwd = params => { return axios.post(`${base}changePwd`, params,
 	   {
@@ -50,5 +50,11 @@ define(["lib/axios.min","lib/qs"],function(axios,Qs){
 	  ).then(res => res);
 	};
 	
-	return {login,getUser,changePwd,getSicks,test};
+	const getBase = params => { return axios.get(`${base}base/get`, {params:params}).then(res => res);};
+	const getLiving = params => { return axios.get(`${base}living/get`, {params:params}).then(res => res);};
+	const getPhy = params => { return axios.get(`${base}phy/get`, {params:params}).then(res => res);};
+	const getPsy = params => { return axios.get(`${base}psy/get`, {params:params}).then(res => res);};
+	const getSick = params => { return axios.get(`${base}sick/get`, {params:params}).then(res => res);};
+	
+	return {login,getUser,changePwd,getSicks,getBase,getLiving,getPhy,getPsy,getSick,test};
 });

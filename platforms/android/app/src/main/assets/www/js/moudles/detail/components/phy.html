@@ -12,8 +12,201 @@
 	  </div>
 	</div>
 	<div class="page-content"> 
-		<div class="content-block">
-			{{$route.query.userId}}
-		</div>
+		<form class="list" style="margin-top:18px">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">身高</div>
+							<div class="item-input-wrap">
+								{{phy.heightStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">体重</div>
+							<div class="item-input-wrap">
+								{{phy.weightStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">BMI</div>
+							<div class="item-input-wrap">
+								{{phy.bmistr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">腰围</div>
+							<div class="item-input-wrap">
+								{{phy.abdominalCircumferenceStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">臀围</div>
+							<div class="item-input-wrap">
+								{{phy.hipCircumferenceStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">WHR(腰臀比)</div>
+							<div class="item-input-wrap">
+								{{phy.whrstr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">心率</div>
+							<div class="item-input-wrap">
+								{{phy.heartRateStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">呼吸</div>
+							<div class="item-input-wrap">
+								{{phy.breatheRateStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">体温</div>
+							<div class="item-input-wrap">
+								{{phy.temperatureStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">血压测量频率</div>
+							<div class="item-input-wrap">
+								{{phy.bloodPressureStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">血糖测试频率</div>
+							<div class="item-input-wrap">
+								{{phy.bloodSugarStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">血脂测试频率</div>
+							<div class="item-input-wrap">
+								{{phy.bloodLipidStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">尿酸测试频率</div>
+							<div class="item-input-wrap">
+								{{phy.uricAcidStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">血氧饱和度测试频率</div>
+							<div class="item-input-wrap">
+								{{phy.bloodOxygenStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">血压值</div>
+							<div class="item-input-wrap">
+								{{phy.bloodPressureValStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">血糖值</div>
+							<div class="item-input-wrap">
+								{{phy.bloodSugarValStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">血脂值</div>
+							<div class="item-input-wrap">
+								{{phy.bloodLipidValStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">血尿酸</div>
+							<div class="item-input-wrap">
+								{{phy.uricAcidValStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">血氧饱和度</div>
+							<div class="item-input-wrap">
+								{{phy.bloodOxygenValStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
     </div>
 </div>

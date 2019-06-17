@@ -12,8 +12,292 @@
 	  </div>
 	</div>
 	<div class="page-content"> 
-		<div class="content-block">
-			{{$route.query.userId}}
-		</div>
+		<div class="block-title" style="margin-top:25px">饮食习惯</div> 
+		<form class="list" style="margin-bottom:0">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">1.每日进餐情况是否规律？</div>
+							<div class="item-input-wrap">
+								{{living.mealStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">2.早餐情况？</div>
+							<div class="item-input-wrap">
+								{{living.breakfastStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">3.上午加餐情况？</div>
+							<div class="item-input-wrap">
+								{{living.extraMeal1Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">4.午餐情况？</div>
+							<div class="item-input-wrap">
+								{{living.lunchStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">5.下午加餐情况？</div>
+							<div class="item-input-wrap">
+								{{living.extraMeal2Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">6.晚餐情况？</div>
+							<div class="item-input-wrap">
+								{{living.drinkingStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">7.夜宵情况？</div>
+							<div class="item-input-wrap">
+								{{living.nightingaleStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">8.荤素搭配情况？</div>
+							<div class="item-input-wrap">
+								{{living.alizarinStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">9.饮食偏好？【多选题】</div>
+							<div class="item-input-wrap">
+								{{living.preferenceStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">10.特殊饮食？【多选题】</div>
+							<div class="item-input-wrap">
+								{{living.specialStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">11.你经常吃甜食吗（如蛋糕、点心等）？</div>
+							<div class="item-input-wrap">
+								{{living.sweetsStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">12.你经常吃水果吗？</div>
+							<div class="item-input-wrap">
+								{{living.fruitStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">13.你经常喝含糖饮料吗（瓶装类）？</div>
+							<div class="item-input-wrap">
+								{{living.sugaryDrinkStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
+		<div class="block-title" style="margin-top:10px">运动习惯</div> 
+		<form class="list" style="margin-bottom:0">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">1.最近7天内，您是否做了剧烈的体育活动？（提重物、挖掘、有氧运动或是快速骑车）</div>
+							<div class="item-input-wrap">
+								{{living.violentMovementStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li v-if="living.violentMovementStr && living.violentMovementStr!='无相关活动'">
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">1-1.在这其中一天您通常会花多少时间在剧烈的体育活动上？</div>
+							<div class="item-input-wrap">
+								{{living.violentMovementPerDayStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">2.最近7天内，您有几天做了适度的体育活动，（提轻的物品、以平常的速度骑车或打双人网球等，不包括走路)</div>
+							<div class="item-input-wrap">
+								{{living.moderateMovementStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li v-if="living.moderateMovementStr && living.moderateMovementStr!='无相关活动'">
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">2-1.在这其中一天您通常会花多少时间在适度的体育活动上?</div>
+							<div class="item-input-wrap">
+								{{living.moderateMinuteStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">3.最近7天内,您有几天是步行，且一次步行至少10分钟?)</div>
+							<div class="item-input-wrap">
+								{{living.walkMovementStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li v-if="living.walkMovementStr && living.walkMovementStr!='无相关活动'">
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">3-1.在这其中一天您通常花多少时间在步行上？</div>
+							<div class="item-input-wrap">
+								{{living.walkMovementPerDayStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">4.最近7天内，工作日您有几天是坐着的？</div>
+							<div class="item-input-wrap">
+								{{living.sittingRecent7DaysStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li v-if="living.sittingRecent7DaysStr && living.sittingRecent7DaysStr!='无相关活动'">
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">4-1.在这其中一天您通常花多少时间坐着？</div>
+							<div class="item-input-wrap">
+								{{living.sittingHoursStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
+		<div class="block-title" style="margin-top:10px">嗜好</div> 
+		<form class="list" style="margin-bottom:0">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">吸烟情况</div>
+							<div class="item-input-wrap">
+								{{living.smokingStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">和你一起生活或工作的人中有人吸烟吗？</div>
+							<div class="item-input-wrap">
+								{{living.partnerSmokingStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">平均每周被动吸烟超过15分钟的天数？</div>
+							<div class="item-input-wrap">
+								{{living.passiveSmokingStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">饮酒情况</div>
+							<div class="item-input-wrap">
+								{{living.drinkingStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li v-if="living.drinkingStr && living.drinkingStr!='从不饮酒'">
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">近期（１个月以来）饮酒的种类有哪些？【多选题】</div>
+							<div class="item-input-wrap">
+								{{living.drinkingTypes}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li v-if="living.drinkingStr && living.drinkingStr!='从不饮酒'">
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">每天饮酒量：</div>
+							<div class="item-input-wrap">
+								{{living.drinkingVal}}mol
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
     </div>
 </div>

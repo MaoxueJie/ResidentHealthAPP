@@ -12,8 +12,270 @@
 	  </div>
 	</div>
 	<div class="page-content"> 
-		<div class="content-block">
-			{{$route.query.userId}}
-		</div>
+		<div class="block-title" style="margin-top:25px">情绪筛查量表1<br>在过去的两周里, 你生活中以下症状出现的频率有多少？</div> 
+		<form class="list" style="margin-bottom:0">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">感到不安、担心及烦躁</div>
+							<div class="item-input-wrap">
+								{{psy.gad7Q1Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">不能停止或无法控制担心</div>
+							<div class="item-input-wrap">
+								{{psy.gad7Q2Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">对各种各样的事情担忧过多</div>
+							<div class="item-input-wrap">
+								{{psy.gad7Q3Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">很紧张，很难放松下来</div>
+							<div class="item-input-wrap">
+								{{psy.gad7Q4Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">非常焦躁，以至无法静坐</div>
+							<div class="item-input-wrap">
+								{{psy.gad7Q5Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">变得容易烦恼或易被激怒</div>
+							<div class="item-input-wrap">
+								{{psy.gad7Q6Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">感到好像有什么可怕的事会发生</div>
+							<div class="item-input-wrap">
+								{{psy.gad7Q7Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
+		<div class="block-title" style="margin-top:10px">情绪筛查量表2<br>在过去的两周里, 你生活中以下症状出现的频率有多少</div> 
+		<form class="list" style="margin-bottom:0">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">做什么事都没兴趣, 沒意思</div>
+							<div class="item-input-wrap">
+								{{psy.phq9Q1Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">感到心情低落, 抑郁, 沒希望</div>
+							<div class="item-input-wrap">
+								{{psy.phq9Q2Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">入睡困难,总是醒着, 或睡得太多嗜睡</div>
+							<div class="item-input-wrap">
+								{{psy.phq9Q3Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">常感到很疲倦,沒劲</div>
+							<div class="item-input-wrap">
+								{{psy.phq9Q4Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">口味不好,或吃的太多</div>
+							<div class="item-input-wrap">
+								{{psy.phq9Q5Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">自己对自己不满, 觉得自己是个失败者,或让家人丟脸了</div>
+							<div class="item-input-wrap">
+								{{psy.phq9Q6Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">无法集中精力,即便是读报纸或看电视时,记忆力下降</div>
+							<div class="item-input-wrap">
+								{{psy.phq9Q7Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">行动或说话缓慢到引起人们的注意,或刚好相反, 坐臥不安,烦躁易怒易怒,到处走动</div>
+							<div class="item-input-wrap">
+								{{psy.phq9Q8Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">有不如一死了之的念头, 或想怎样伤害自己一下</div>
+							<div class="item-input-wrap">
+								{{psy.phq9Q9Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">以上症状，影响到你的家庭生活, 工作, 人际关系的程度</div>
+							<div class="item-input-wrap">
+								{{psy.phq9AffectStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
+		<div class="block-title" style="margin-top:10px">认知功能自评表</div> 
+		<form class="list" style="margin-bottom:0">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">是否判断力出现问题</div>
+							<div class="item-input-wrap">
+								{{psy.ad8Q1Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">是否缺乏兴趣、爱好、活动减少</div>
+							<div class="item-input-wrap">
+								{{psy.ad8Q2Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">是否不断重复同一件事（是指没有必要地重复，如擦好了地，还要再反复擦地等）</div>
+							<div class="item-input-wrap">
+								{{psy.ad8Q3Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">在学习使用某些日常工具或家用电器方面出现问题（如使用电脑、智能手机、DVD、电视遥控器）</div>
+							<div class="item-input-wrap">
+								{{psy.ad8Q4Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">是否记不清当前月份或年份</div>
+							<div class="item-input-wrap">
+								{{psy.ad8Q5Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">是否个人经济财产掌控困难</div>
+							<div class="item-input-wrap">
+								{{psy.ad8Q6Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">是否记不住和别人的约定</div>
+							<div class="item-input-wrap">
+								{{psy.ad8Q7Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">日常记忆和思考能力是否有问题</div>
+							<div class="item-input-wrap">
+								{{psy.ad8Q8Str}}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
     </div>
 </div>

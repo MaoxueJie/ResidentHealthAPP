@@ -1,4 +1,4 @@
-<div  class="page">
+<div class="page">
 	<div class="navbar">
 	  <div class="navbar-inner">
 	    <div class="left">
@@ -12,8 +12,149 @@
 	  </div>
 	</div>
 	<div class="page-content"> 
-		<div class="content-block">
-			{{$route.query.userId}}
-		</div>
+		<form class="list" style="margin-top:18px">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">出生日期</div>
+							<div class="item-input-wrap">
+								{{base.birthday}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">身份证/体检号</div>
+							<div class="item-input-wrap">
+								{{base.idCardNo}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">性别</div>
+							<div class="item-input-wrap">
+								{{base.genderStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">文化程度</div>
+							<div class="item-input-wrap">
+								{{base.educationStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">婚育状况</div>
+							<div class="item-input-wrap">
+								{{base.marriageStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">儿女数量</div>
+							<div class="item-input-wrap">
+								{{base.sonAndDaughterCountStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">家庭类型</div>
+							<div class="item-input-wrap">
+								{{base.familyTypeStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">同居人关系</div>
+							<div class="item-input-wrap">
+								{{base.familyDescStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">居住地址</div>
+							<div class="item-input-wrap">
+								{{base.city}}{{base.community}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">工作状态</div>
+							<div class="item-input-wrap">
+								{{base.jobStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">宗教信仰</div>
+							<div class="item-input-wrap">
+								{{base.religionStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">家庭人口数</div>
+							<div class="item-input-wrap">
+								{{base.personCountStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">家庭人均月收入</div>
+							<div class="item-input-wrap">
+								{{base.habitatIncomeStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">医疗费用负担方式</div>
+							<div class="item-input-wrap">
+								{{base.medicalPayWayStr}}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
     </div>
 </div>
