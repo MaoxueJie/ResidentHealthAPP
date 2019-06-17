@@ -46,18 +46,6 @@
 							</a>
 						</li>
 						<li>
-							<a v-on:click="phy($route.query.userId)" class="item-link pb">
-								<div class="item-content">
-									<div class="item-media">
-										<i class="fa fa-heartbeat" style="font-size:20px;"></i>
-									</div>
-									<div class="item-inner">
-										<div class="item-title">生理指标</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
 							<a v-on:click="sick($route.query.userId)" class="item-link pb">
 								<div class="item-content">
 									<div class="item-media">
@@ -70,6 +58,19 @@
 							</a>
 						</li>
 						<li>
+							<a v-on:click="phy($route.query.userId)" class="item-link pb">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="fa fa-heartbeat" style="font-size:20px;"></i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">生理指标</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						
+						<li>
 							<a v-on:click="psy($route.query.userId)" class="item-link pb">
 								<div class="item-content">
 									<div class="item-media" style="margin-left:3px;">
@@ -81,6 +82,7 @@
 								</div>
 							</a>
 						</li>
+						<!-- 
 						<li>
 							<a v-on:click="tcm($route.query.userId)" class="item-link pb">
 								<div class="item-content">
@@ -93,7 +95,7 @@
 								</div>
 							</a>
 						</li>
-					
+					    -->
 					 </ul>
 				</div> 
 		 </div>
