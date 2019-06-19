@@ -13,7 +13,8 @@
 	</div>
 	<div class="page-content"> 
 		<div class="content-block">
-			<p>
+			<p style="text-align: center">
+			    <i v-if="qr==''" class="fa fa-spinner fa-pulse" style="font-size:36px"></i>
 				<img :src="qr" style="width:100%">
 			</p>
 		</div>
