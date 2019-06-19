@@ -20,6 +20,9 @@
       "APP_KEY": "396299d2c931fce6152b9bdf",
       "CHANNEL": "developer-default",
       "PACKAGE_NAME": "com.breeze.health"
+    },
+    "cordova-plugin-http": {
+      "PACKAGE_NAME": "com.breeze.health"
     }
   },
   "dependent_plugins": {
@@ -27,6 +30,9 @@
       "PACKAGE_NAME": "com.breeze.health"
     },
     "cordova-plugin-jcore": {
+      "PACKAGE_NAME": "com.breeze.health"
+    },
+    "cordova-plugin-file": {
       "PACKAGE_NAME": "com.breeze.health"
     }
   }

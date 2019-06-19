@@ -10,6 +10,14 @@
     <feature name="JPushPlugin">
         <param name="android-package" value="cn.jiguang.cordova.push.JPushPlugin" />
     </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="CordovaHttpPlugin">
+        <param name="android-package" value="com.synconset.CordovaHttpPlugin" />
+    </feature>
     <name>居民e健康</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
