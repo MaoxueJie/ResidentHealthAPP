@@ -164,6 +164,7 @@
 		</div>
 	</div>
 	<div class="popup popup-search">
+		<div class="view view-popup">
 		<div class="navbar">
 		  <div class="navbar-inner">
 		    <div class="left">
@@ -213,17 +214,14 @@
 			    </li>
 			    <li class="item-content item-input">
 			      <div class="item-inner" style="margin-left:5px">
-				      <a href="#" class="item-link smart-select" routableModals>
-				        <!-- select -->
+				      <a href="#"  v-on:click="openSelect" class="item-link smart-select" routableModals>
 				        <select name="fruits">
 				          <option value="apple" selected>Apple</option>
 				          <option value="pineapple">Pineapple</option>
 				        </select>
 				        <div class="item-content">
 				          <div class="item-inner">
-				            <!-- Select label -->
 				            <div class="item-title">Fruit</div>
-				            <!-- Selected value, not required -->
 				            <div class="item-after">Apple</div>
 				          </div>
 				        </div>
@@ -232,6 +230,7 @@
 			    </li>
 			   </ul>
 		 	</div>
+	    </div>
 	    </div>
 	 </div>
 </div>

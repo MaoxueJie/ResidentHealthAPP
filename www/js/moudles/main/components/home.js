@@ -45,12 +45,10 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   this.getSicks();
        },
        more(){
-    	   var searchPopup = this.$f7.popup.create({
-    		   el: '.popup-search',
-    		   swipeToClose: true,
-    	   });
-    	   //this.$f7.views.create('.view-popup');
     	   searchPopup.open();
+       },
+       openSelect(){
+    	   smartSelect.open();
        },
        reload(){
     	   this.search();
@@ -103,6 +101,8 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		      loading:false,
 		      mobile:'',
 		      nullsearch:false,
+		      searchPopup:null,
+		      smartSelect:null,
 		    };
 		  },
 		  watch: {
@@ -138,7 +138,16 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 				  this.getSicks();
 			  });
 			  
-			  this.users=[]
+			  this.users=[],
+			  
+			  searchPopup = this.$f7.popup.create({
+	    		   el: '.popup-search'
+	    	  });
+	    	  this.$f7.views.create('.view-popup');
+	    	  smartSelect = this.$f7.smartSelect.create({
+	    		   el: '.smart-select',
+	    		   openIn: 'popup'
+	    	  });
 			  
 		  },
 		  //beforeRouteLeave (to, from, next) {

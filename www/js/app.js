@@ -109,7 +109,6 @@ define(["./moudles/main/index","./settings"],function(){
 	 		    router.addRoutes(main);
 	 		    router.push("/home");
 	        //},100)
-	       
 	      });
 	  },
 	});
