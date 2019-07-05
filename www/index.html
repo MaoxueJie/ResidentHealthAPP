@@ -18,12 +18,14 @@
 <body class="color-theme-teal" style="background-color:var(--f7-theme-color)">
   <div id="app" >
   	 <f7-app :params="f7params">
-     	<div class="view view-main">
-	     <transition name="fade" mode="out-in">
-	     	<keep-alive>
-		        <router-view />
-		     </keep-alive>
-		 </transition>
+  	 	<div class="views">
+	     	<div class="view view-main">
+		     <transition name="fade" mode="out-in">
+		     	<keep-alive>
+			        <router-view />
+			    </keep-alive>
+			 </transition>
+			</div>
 		</div>
 	 </f7-app>
   </div>

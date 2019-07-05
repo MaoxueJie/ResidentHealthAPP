@@ -1,48 +1,46 @@
 <div data-page="home" class="page">
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="left"><span v-if="searchable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-    <div class="center title">居民e健康</div>
-    <div class="right">
-    	<a v-on:click="reload" v-if="searchable" href="#" class="link color-white">
-              <i class="f7-icons" style="font-size:18px;">reload</i>
-        </a>
-    </div>
-    <div v-if="searchable" class="subnavbar" style="margin-top:-16px;">
-       <form class="searchbar">
-          <div class="searchbar-inner">
-            <div class="searchbar-input-wrap">
-              <input type="search" placeholder="手机号码" v-model="mobile">
-              <i class="searchbar-icon"></i>
-              <span class="input-clear-button"></span>
-            </div>
-            <span v-on:click="search" v-if="mobile!=''" style="margin-left:10px"><i class="f7-icons" style="color:var(--f7-theme-color)">search</i></span>
-          </div>
-        </form>
-      </div>
-  </div>
-</div>
-<div class="toolbar toolbar-bottom tabbar-labels" style="height:45px">
-    <div class="toolbar-inner">
-        <a href="#tab1" class="tab-link tab-link-active" style="padding-top: 2px;padding-bottom: 6px;">
-            <i class="icon icon-fill f7-icons size-22">persons</i>
-            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">我的居民</span>
-        </a>
-        <a href="#tab2" class="tab-link" style="padding-top: 2px;padding-bottom: 6px;">
-            <i class="icon icon-fill f7-icons size-22">
-            	gear
-            	<!--  
-            	<span class="badge color-red" >5</span>
-            	-->
-            </i>
-            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">个人设置</span>
-        </a>
+	<div class="navbar"> 
+	  <div class="navbar-inner">
+	    <div class="left"><span v-if="searchable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+	    <div class="center title">居民e健康</div>
+	    <div class="right">
+	    	<a v-on:click="reload" v-if="searchable" href="#" class="link color-white">
+	              <i class="f7-icons" style="font-size:18px;">reload</i>
+	        </a>
+	    </div>
+	    <div v-if="searchable" class="subnavbar" style="margin-top:-16px;">
+	       <form class="searchbar">
+	          <div class="searchbar-inner">
+	          	<span v-on:click="more" v-if="mobile==''"><i class="f7-icons" style="color:var(--f7-theme-color)">filter</i></span>
+	            <div class="searchbar-input-wrap">
+	              <input type="search" placeholder="手机号码" v-model="mobile">
+	              <i class="searchbar-icon"></i>
+	              <span class="input-clear-button"></span>
+	            </div>
+	            <span v-on:click="search" v-if="mobile!=''" style="margin-left:10px"><i class="f7-icons" style="color:var(--f7-theme-color)">search</i></span>
+	          </div>
+	        </form>
+	    </div>
+	  </div>
 	</div>
-</div>
-<!-- 
-<a href="#" class="floating-button"><i class="icon icon-plus"></i></a>
- -->
-<div class="tabs">
+	<div class="toolbar toolbar-bottom tabbar-labels" style="height:45px">
+	    <div class="toolbar-inner">
+	        <a href="#tab1" class="tab-link tab-link-active" style="padding-top: 2px;padding-bottom: 6px;">
+	            <i class="icon icon-fill f7-icons size-22">persons</i>
+	            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">我的居民</span>
+	        </a>
+	        <a href="#tab2" class="tab-link" style="padding-top: 2px;padding-bottom: 6px;">
+	            <i class="icon icon-fill f7-icons size-22">
+	            	gear
+	            	<!--  
+	            	<span class="badge color-red" >5</span>
+	            	-->
+	            </i>
+	            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">个人设置</span>
+	        </a>
+		</div>
+	</div>
+	<div class="tabs">
 		<div id="tab1" v-on:scroll.passive="onScroll" @tab:show="onShowTab"  class="tab tab-main tab-active page-content infinite-scroll-content">
 			<div class="list users-list" style="margin-top: 60px;">
 		      <ul>
@@ -146,23 +144,94 @@
 								</div>
 							</a>
 						</li>
-						<!-- 
 						<li>
-							<a v-on:click="test" class="item-link">
-								<div class="item-content">
-									<div class="item-media">
-										<i class="f7-icons" style="color:#fc3;font-size:20px;margin-top:10px">fastforward</i>
-									</div>
-									<div class="item-inner">
-										<div class="item-title">test</div>
-									</div>
-								</div>
-							</a>
+							<a href="#" class="item-link smart-select">
+						        <select name="fruits">
+						          <option value="apple" selected>Apple</option>
+						          <option value="pineapple">Pineapple</option>
+						        </select>
+						        <div class="item-content">
+						          <div class="item-inner">
+						            <div class="item-title">Fruit</div>
+						            <div class="item-after">Apple</div>
+						          </div>
+						        </div>
+						      </a>
 						</li>
-						 -->
 					 </ul>
 				</div> 
 			</div>
 		</div>
 	</div>
+	<div class="popup popup-search">
+		<div class="navbar">
+		  <div class="navbar-inner">
+		    <div class="left">
+		    	<a   href="#" class="link color-white popup-close">
+              		<i class="f7-icons" style="font-size:22px;">chevron_left</i>
+        		</a>
+		    </div>
+		    <div class="center title">条件查询</div>
+		    <div class="right">
+		    	<a v-on:click="reload"  href="#" class="link color-white">
+              		<i class="f7-icons" style="font-size:22px;">search</i>
+        		</a>
+		    </div>
+		  </div>
+		</div>
+	    <div class="block">
+			<div class="list inline-labels no-hairlines-md" style="margin-top:25px">
+			  <ul>
+			    <li class="item-content item-input">
+			      <div class="item-inner" style="margin-left:5px">
+			        <div class="item-title item-label" style="width:20%;">性别</div>
+			        <div class="item-input-wrap">
+			          <select placeholder="性别">
+			            <option value="Male">男</option>
+			            <option value="Female">女</option>
+			          </select>
+			        </div>
+			      </div>
+			    </li>
+			    <li class="item-content item-input">
+			      <div class="item-inner" style="margin-left:5px">
+			        <div class="item-title item-label" style="width:20%;">慢病</div>
+			        <div class="item-input-wrap">
+			          <input  type="text" placeholder="请输入新密码">
+			          <span class="input-clear-button"></span>
+			        </div>
+			      </div>
+			    </li>
+			    <li class="item-content item-input">
+			      <div class="item-inner" style="margin-left:5px">
+			        <div class="item-title item-label" style="width:20%;">年龄</div>
+			        <div class="item-input-wrap">
+			          <input  type="text" placeholder="请再次输入新密码">
+			          <span class="input-clear-button"></span>
+			        </div>
+			      </div>
+			    </li>
+			    <li class="item-content item-input">
+			      <div class="item-inner" style="margin-left:5px">
+				      <a href="#" class="item-link smart-select" routableModals>
+				        <!-- select -->
+				        <select name="fruits">
+				          <option value="apple" selected>Apple</option>
+				          <option value="pineapple">Pineapple</option>
+				        </select>
+				        <div class="item-content">
+				          <div class="item-inner">
+				            <!-- Select label -->
+				            <div class="item-title">Fruit</div>
+				            <!-- Selected value, not required -->
+				            <div class="item-after">Apple</div>
+				          </div>
+				        </div>
+				      </a>
+			      </div>
+			    </li>
+			   </ul>
+		 	</div>
+	    </div>
+	 </div>
 </div>

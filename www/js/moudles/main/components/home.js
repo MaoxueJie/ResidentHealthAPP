@@ -44,6 +44,14 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     		   this.nullsearch = false;
     	   this.getSicks();
        },
+       more(){
+    	   var searchPopup = this.$f7.popup.create({
+    		   el: '.popup-search',
+    		   swipeToClose: true,
+    	   });
+    	   //this.$f7.views.create('.view-popup');
+    	   searchPopup.open();
+       },
        reload(){
     	   this.search();
        },
