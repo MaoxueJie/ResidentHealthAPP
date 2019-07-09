@@ -18,7 +18,7 @@ define(["text!./view.html","api/api"],function(view,{login}){
 					  this.$router.replace(path)
 				  }else
 				  {
-					  this.$router.replace("/");
+					  this.$router.replace("/home");
 				  }
 			  }else
 			  {

@@ -4,7 +4,7 @@ define(["./moudles/home/index","./settings"],function(){
    require.config({
 		...settings
    });
-
+   
    var router = new VueRouter({
 		routes: [
 			{ path: '/', component: {template:"<div></div>"} },
@@ -49,9 +49,6 @@ define(["./moudles/home/index","./settings"],function(){
 	   }
 		
    });
-   
-   
-   
    
    document.addEventListener('deviceReady',function(){
        window.JPush.init();
