@@ -40,7 +40,7 @@ define(["lib/axios.min","lib/qs"],function(axios,Qs){
 	  ).then(res => res);
     };
     
-    const getSicks = params => { return axios.post(`${base}getSicks`, params,).then(res => res);};
+    const getSicks = params => { return axios.post(`${base}getSicks_new`, params).then(res => res);};
 	
 	const getBase = params => { return axios.get(`${base}base/get`, {params:params}).then(res => res);};
 	const getLiving = params => { return axios.get(`${base}living/get`, {params:params}).then(res => res);};
