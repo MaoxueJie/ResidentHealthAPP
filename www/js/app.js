@@ -1,5 +1,5 @@
 
-define(["./moudles/main/index","./settings"],function(){
+define(["./moudles/home/index","./settings"],function(){
    var settings = require("./settings");
    require.config({
 		...settings
@@ -7,7 +7,7 @@ define(["./moudles/main/index","./settings"],function(){
 
    var router = new VueRouter({
 		routes: [
-			{ path: '/', component: {template:"<div>hellow</div>"} },
+			{ path: '/', component: {template:"<div></div>"} },
 		]
    });
    
@@ -104,11 +104,10 @@ define(["./moudles/main/index","./settings"],function(){
 	  mounted() {
 	      this.$f7ready((f7) => {
 	        f7.views.create('.view-main');
-	        //setTimeout(function(){
-	        	var main = require("moudles/main/index");
-	 		    router.addRoutes(main);
-	 		    router.push("/home");
-	        //},100)
+	        require(["moudles/home/index"],function(home){
+	        	router.addRoutes(home);
+		 		router.push("/home");
+	        });
 	      });
 	  },
 	});

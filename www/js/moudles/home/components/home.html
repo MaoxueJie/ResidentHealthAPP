@@ -144,20 +144,6 @@
 								</div>
 							</a>
 						</li>
-						<li>
-							<a href="#" class="item-link smart-select">
-						        <select name="fruits">
-						          <option value="apple" selected>Apple</option>
-						          <option value="pineapple">Pineapple</option>
-						        </select>
-						        <div class="item-content">
-						          <div class="item-inner">
-						            <div class="item-title">Fruit</div>
-						            <div class="item-after">Apple</div>
-						          </div>
-						        </div>
-						      </a>
-						</li>
 					 </ul>
 				</div> 
 			</div>
@@ -174,61 +160,84 @@
 		    </div>
 		    <div class="center title">条件查询</div>
 		    <div class="right">
-		    	<a v-on:click="reload"  href="#" class="link color-white">
+		    	<a v-on:click="searchMulti"  href="#" class="link color-white">
               		<i class="f7-icons" style="font-size:22px;">search</i>
         		</a>
 		    </div>
 		  </div>
 		</div>
-	    <div class="block">
-			<div class="list inline-labels no-hairlines-md" style="margin-top:25px">
-			  <ul>
-			    <li class="item-content item-input">
-			      <div class="item-inner" style="margin-left:5px">
-			        <div class="item-title item-label" style="width:20%;">性别</div>
-			        <div class="item-input-wrap">
-			          <select placeholder="性别">
-			            <option value="Male">男</option>
-			            <option value="Female">女</option>
-			          </select>
-			        </div>
-			      </div>
-			    </li>
-			    <li class="item-content item-input">
-			      <div class="item-inner" style="margin-left:5px">
-			        <div class="item-title item-label" style="width:20%;">慢病</div>
-			        <div class="item-input-wrap">
-			          <input  type="text" placeholder="请输入新密码">
-			          <span class="input-clear-button"></span>
-			        </div>
-			      </div>
-			    </li>
-			    <li class="item-content item-input">
-			      <div class="item-inner" style="margin-left:5px">
-			        <div class="item-title item-label" style="width:20%;">年龄</div>
-			        <div class="item-input-wrap">
-			          <input  type="text" placeholder="请再次输入新密码">
-			          <span class="input-clear-button"></span>
-			        </div>
-			      </div>
-			    </li>
-			    <li class="item-content item-input">
-			      <div class="item-inner" style="margin-left:5px">
-				      <a href="#"  v-on:click="openSelect" class="item-link smart-select" routableModals>
-				        <select name="fruits">
-				          <option value="apple" selected>Apple</option>
-				          <option value="pineapple">Pineapple</option>
-				        </select>
-				        <div class="item-content">
-				          <div class="item-inner">
-				            <div class="item-title">Fruit</div>
-				            <div class="item-after">Apple</div>
-				          </div>
-				        </div>
-				      </a>
-			      </div>
-			    </li>
-			   </ul>
+	    <div class="block" style="margin-top:60px;">
+			<div id="conditionQuery" class="list inline-labels no-hairlines-md" style="margin-top:25px">
+			  <a href="#" v-on:click="openSexSelect" class="item-link smart-select sex-smart-select" routableModals>
+		        <select name="性别" v-model="querySex">
+		          <option value="1">男</option>
+		          <option value="2">女</option>
+		        </select>
+		        <div class="item-content">
+		          <div class="item-inner">
+		            <div class="item-title">性别</div>
+		            <div class="item-after">男</div>
+		          </div>
+		        </div>
+			  </a>
+			  
+			  <a href="#">
+			  	<div class="item-content">
+		          <div class="item-inner">
+			          <div class="item-title">年龄</div>
+			          <div class="item-after">
+			              <div style="width:200px;">
+						  <ul style="width:100%;">
+						    <li class="item-row">
+						      <div class="item-cell width-auto flex-shrink-0">
+						        <i class="fa fa-child"></i>
+						      </div>
+						      <div class="item-cell item-cell-shrink-3">
+						        <!-- Dual range slider with all the parameters passed via data- attributes -->
+						        <div
+						          id="price-filter"
+						          class="range-slider age-range-slider color-green"
+						          data-label="true"
+						          data-dual="true"
+						          data-min="0"
+						          data-max="100"
+						          data-step="1"
+						          data-value-left="0"
+						          data-value-right="100"
+						        ></div>
+						      </div>
+						      <div class="item-cell width-auto flex-shrink-0">
+						        <i class="icon f7-icons if-not-md">person</i>
+						      </div>
+						    </li>
+						  </ul>
+						  </div>
+				  	  </div>
+			  	  </div>
+			  	</div>
+			  </a>
+			  <a href="#" v-on:click="openManSelect" class="item-link smart-select man-smart-select" routableModals>
+		        <select name="慢病" multiple v-model="querySicks">
+		          <option value="1">高血压</option>
+		          <option value="2">冠心病</option>
+		          <option value="3">高脂血症</option>
+		          <option value="4">糖尿病</option>
+		          <option value="5">脑血管疾病</option>
+		          <option value="6">慢性胃炎</option>
+		          <option value="7">胃溃疡</option>
+		          <option value="8">支气管哮喘</option>
+		          <option value="9">慢性阻塞性肺疾病（COPD）</option>
+		          <option value="10">骨质疏松症</option>
+		          <option value="11">青光眼</option>
+		          <option value="12">白内障</option>
+		        </select>
+		        <div class="item-content">
+		          <div class="item-inner">
+		            <div class="item-title">慢病</div>
+		            <div class="item-after">男</div>
+		          </div>
+		        </div>
+			  </a>
 		 	</div>
 	    </div>
 	    </div>

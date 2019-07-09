@@ -37,6 +37,9 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
        },
        search(){
     	   this.page = 1;
+    	   this.querySex = null,
+    	   this.querySicks = [],
+    	   this.queryAge = [],
     	   this.users = [];
     	   if (this.mobile!="")
     		   this.nullsearch = true;
@@ -44,14 +47,30 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     		   this.nullsearch = false;
     	   this.getSicks();
        },
+       searchMulti(){
+    	   this.nullsearch = false;
+    	   this.mobile = "";
+    	   this.page = 1;
+    	   this.users = [];
+    	   searchPopup.close();
+    	   this.getSicks();
+       },
        more(){
     	   searchPopup.open();
        },
-       openSelect(){
-    	   smartSelect.open();
+       openSexSelect(){
+    	   sexSmartSelect.open();
+       },
+       openManSelect(){
+    	   manSmartSelect.open();
        },
        reload(){
-    	   this.search();
+    	   this.querySex = null,
+    	   this.querySicks = [],
+    	   this.queryAge = [],
+    	   this.users = [];
+    	   this.page = 1;
+    	   this.getSicks();
        },
        getSicks(){
     	   var app = this.$f7;
@@ -59,7 +78,10 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   let param = {
     		  page:this.page,
     		  size:this.size,
-    		  mobile:this.mobile
+    		  mobile:this.mobile,
+    		  sex:this.querySex,
+    		  age:this.queryAge,
+    		  sicks:this.querySicks,
     	   }
     	   var that = this;
     	   if (!this.loading)
@@ -100,9 +122,13 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		      size:20,
 		      loading:false,
 		      mobile:'',
+		      querySex:null,
+		      querySicks:[],
+		      queryAge:[],
 		      nullsearch:false,
 		      searchPopup:null,
-		      smartSelect:null,
+		      sexSmartSelect:null,
+		      manSmartSelect:null,
 		    };
 		  },
 		  watch: {
@@ -144,14 +170,27 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 	    		   el: '.popup-search'
 	    	  });
 	    	  this.$f7.views.create('.view-popup');
-	    	  smartSelect = this.$f7.smartSelect.create({
-	    		   el: '.smart-select',
-	    		   openIn: 'popup'
+	    	  sexSmartSelect = this.$f7.smartSelect.create({
+	    		   el: '.sex-smart-select',
+	    		   openIn: 'popup',
+	    		   popupCloseLinkText: '关闭',
+	    	  });
+	    	  
+	    	  manSmartSelect  = this.$f7.smartSelect.create({
+	    		   el: '.man-smart-select',
+	    		   openIn: 'popup',
+	    		   popupCloseLinkText: '关闭',
+	    	  });
+	    	  
+	    	  this.$f7.range.create({
+	    		  el: '.age-range-slider',
+	    		  on: {
+		    		  changed : function(range,value){
+		    			  that.queryAge = value;
+		    		  }
+	    		  }
 	    	  });
 			  
 		  },
-		  //beforeRouteLeave (to, from, next) {
-			//   alert(to);
-		  //}
 	})
 });
