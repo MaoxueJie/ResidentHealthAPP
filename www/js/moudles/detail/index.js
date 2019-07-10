@@ -6,6 +6,9 @@ define(["lib/text!./view.html","./components/base",
 	   back(){
 		   this.$router.back();
 	   },
+	   call(mobile){
+		   window.location.href="tel:"+mobile;
+	   },
 	   base(id){
 		   console.log("info:" + id);
 		   this.$router.push({path:"/base",query:{userId:id}});

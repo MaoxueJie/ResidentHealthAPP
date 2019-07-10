@@ -148,6 +148,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		  activated() {
 			  document.getElementById("tab1").scrollTop = this.offsetTops["tab1"]|0;
 			  document.getElementById("tab2").scrollTop = this.offsetTops["tab2"]|0;
+			  document.getElementById("tab3").scrollTop = this.offsetTops["tab3"]|0;
 		  },
 		  mounted(){
 			  getUser().then(res=>{

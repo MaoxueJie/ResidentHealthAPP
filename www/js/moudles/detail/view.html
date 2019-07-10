@@ -7,7 +7,7 @@
               <span>返回</span>
             </a>
 	    </div>
-	    <div class="center title"><a :href="'tel:'+ $route.query.mobile" style="color:#FFF">{{$route.query.mobile}}</a></div>
+	    <div class="center title"><i class="fa fa-phone"></i>&nbsp;<a v-on:click="call($route.query.mobile)" style="color:#FFF">{{$route.query.mobile}}</a></div>
 	    <div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 	  </div>
 	</div>
