@@ -7,7 +7,7 @@
               <span>返回</span>
             </a>
 	    </div>
-	    <div class="center title">{{$route.query.mobile}}</div>
+	    <div class="center title"><a :href="'tel:'+ $route.query.mobile" style="color:#FFF">{{$route.query.mobile}}</a></div>
 	    <div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 	  </div>
 	</div>
@@ -86,5 +86,15 @@
 					 </ul>
 				</div> 
 		 </div>
+    </div>
+    <div class="fab fab-center-bottom color-yellow" v-if="showFavorites && favorites" v-on:click="remove($route.query.userId)">
+	    <a href="#">
+	      <i class="icon f7-icons">delete</i>
+	    </a>
+    </div>
+    <div class="fab fab-center-bottom color-yellow" v-if="showFavorites && !favorites" v-on:click="add($route.query.userId)">
+	    <a href="#">
+	      <i class="icon f7-icons">add</i>
+	    </a>
     </div>
 </div>

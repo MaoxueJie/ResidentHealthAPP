@@ -25,6 +25,9 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
        about(){
     	   this.$router.push("/about");
        },
+       favorites(){
+    	   this.$router.push("/favorites");
+       },
        myQr(){
     	   let url = this.qr;
     	   this.$router.push({path:"/qr",query:{qr:url}});

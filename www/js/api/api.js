@@ -41,12 +41,17 @@ define(["lib/axios.min","lib/qs"],function(axios,Qs){
     };
     
     const getSicks = params => { return axios.post(`${base}getSicks_new`, params).then(res => res);};
-	
 	const getBase = params => { return axios.get(`${base}base/get`, {params:params}).then(res => res);};
 	const getLiving = params => { return axios.get(`${base}living/get`, {params:params}).then(res => res);};
 	const getPhy = params => { return axios.get(`${base}phy/get`, {params:params}).then(res => res);};
 	const getPsy = params => { return axios.get(`${base}psy/get`, {params:params}).then(res => res);};
 	const getSick = params => { return axios.get(`${base}sick/get`, {params:params}).then(res => res);};
+	const getFavoriteSicks = params => { return axios.post(`${base}favorites/getSicks`, params).then(res => res);};
+	const checkFavorites = params => { return axios.get(`${base}favorites/check`, {params:params}).then(res => res);};
+	const addFavorites = params => { return axios.get(`${base}favorites/add`, {params:params}).then(res => res);};
+	const removeFavorites = params => { return axios.get(`${base}favorites/remove`, {params:params}).then(res => res);};
 	
-	return {login,getUser,changePwd,getSicks,getBase,getLiving,getPhy,getPsy,getSick,test};
+	return {login,getUser,changePwd,getSicks,getBase,getLiving,getPhy,getPsy,getSick,getFavoriteSicks,checkFavorites,addFavorites,removeFavorites,test};
+	
+	
 });

@@ -11,13 +11,13 @@
 	    <div v-if="searchable" class="subnavbar" style="margin-top:-16px;">
 	       <form class="searchbar">
 	          <div class="searchbar-inner">
-	          	<span v-on:click="more" v-if="mobile==''"><i class="f7-icons" style="color:var(--f7-theme-color)">filter</i></span>
+	          	<span v-on:click="more" v-if="mobile==''" style="white-space: nowrap;padding-right:8px"><i class="fa fa-filter" style="color:var(--f7-theme-color);font-size:20px"></i></span>
 	            <div class="searchbar-input-wrap">
 	              <input type="search" placeholder="手机号码" v-model="mobile">
 	              <i class="searchbar-icon"></i>
 	              <span class="input-clear-button"></span>
 	            </div>
-	            <span v-on:click="search" v-if="mobile!=''" style="margin-left:10px"><i class="f7-icons" style="color:var(--f7-theme-color)">search</i></span>
+	            <span v-on:click="search" v-if="mobile!=''" style="margin-left:10px"><i class="f7-icons" style="color:var(--f7-theme-color);font-size:20px">search</i></span>
 	          </div>
 	        </form>
 	    </div>
@@ -64,6 +64,11 @@
 	    	<div class="preloader infinite-scroll-preloader" style="animation:null">
 	    		<i class="fa fa-spinner fa-pulse" style="font-size:36px"></i>
 	    	</div>
+	    	<div class="fab fab-left-center" style="left:0;" v-on:click="favorites">
+			    <a href="#" style="border-radius:0px 100px 100px 0px;width: 40px;height: 35px;">
+			      <i class="icon f7-icons">star_round_fill</i>
+			    </a>
+			</div>
 		</div>
 		<div id="tab2" v-on:scroll.passive="onScroll" @tab:show="onShowTab"  class="tab page-content">
 			<div class="settings-view">
@@ -242,4 +247,5 @@
 	    </div>
 	    </div>
 	 </div>
+	 
 </div>
