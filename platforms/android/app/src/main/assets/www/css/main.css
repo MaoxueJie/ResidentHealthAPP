@@ -11,6 +11,10 @@
     font-size:18px;
 }
 
+#app .navbar .navbar-inner .right a{
+    color: #fff!important;
+}
+
 .settings-view{
 	margin-top:25px;
 }
@@ -48,4 +52,12 @@
 	line-height: 40px;
     font-size: 20px;
     color: #2B9F94;
+}
+
+#conditionQuery ul::before{
+	background-color:transparent;
+}
+
+#conditionQuery ul::after{
+	background-color:transparent;
 }

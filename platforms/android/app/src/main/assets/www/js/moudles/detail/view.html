@@ -7,7 +7,7 @@
               <span>返回</span>
             </a>
 	    </div>
-	    <div class="center title">{{$route.query.mobile}}</div>
+	    <div class="center title"><i class="fa fa-phone"></i>&nbsp;<a v-on:click="call($route.query.mobile)" style="color:#FFF">{{$route.query.mobile}}</a></div>
 	    <div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 	  </div>
 	</div>
@@ -82,22 +82,19 @@
 								</div>
 							</a>
 						</li>
-						<!-- 
-						<li>
-							<a v-on:click="tcm($route.query.userId)" class="item-link pb">
-								<div class="item-content">
-									<div class="item-media">
-										<i class="fa fa-leaf" style="font-size:20px;"></i>
-									</div>
-									<div class="item-inner">
-										<div class="item-title">中医体质</div>
-									</div>
-								</div>
-							</a>
-						</li>
-					    -->
+					    
 					 </ul>
 				</div> 
 		 </div>
+    </div>
+    <div class="fab fab-center-bottom color-yellow" v-if="showFavorites && favorites" v-on:click="remove($route.query.userId)">
+	    <a href="#">
+	      <i class="icon f7-icons">delete</i>
+	    </a>
+    </div>
+    <div class="fab fab-center-bottom color-yellow" v-if="showFavorites && !favorites" v-on:click="add($route.query.userId)">
+	    <a href="#">
+	      <i class="icon f7-icons">add</i>
+	    </a>
     </div>
 </div>

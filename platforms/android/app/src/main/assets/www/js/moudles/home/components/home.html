@@ -1,0 +1,251 @@
+<div data-page="home" class="page">
+	<div class="navbar"> 
+	  <div class="navbar-inner">
+	    <div class="left"><span v-if="searchable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+	    <div class="center title">居民e健康</div>
+	    <div class="right">
+	    	<a v-on:click="reload" v-if="searchable" href="#" class="link color-white">
+	              <i class="f7-icons" style="font-size:18px;">reload</i>
+	        </a>
+	    </div>
+	    <div v-if="searchable" class="subnavbar" style="margin-top:-16px;">
+	       <form class="searchbar">
+	          <div class="searchbar-inner">
+	          	<span v-on:click="more" v-if="mobile==''" style="white-space: nowrap;padding-right:8px"><i class="fa fa-filter" style="color:var(--f7-theme-color);font-size:20px"></i></span>
+	            <div class="searchbar-input-wrap">
+	              <input type="search" placeholder="手机号码" v-model="mobile">
+	              <i class="searchbar-icon"></i>
+	              <span class="input-clear-button"></span>
+	            </div>
+	            <span v-on:click="search" v-if="mobile!=''" style="margin-left:10px"><i class="f7-icons" style="color:var(--f7-theme-color);font-size:20px">search</i></span>
+	          </div>
+	        </form>
+	    </div>
+	  </div>
+	</div>
+	<div class="toolbar toolbar-bottom tabbar-labels" style="height:45px">
+	    <div class="toolbar-inner">
+	        <a href="#tab1" class="tab-link tab-link-active" style="padding-top: 2px;padding-bottom: 6px;">
+	            <i class="icon icon-fill f7-icons size-22">persons</i>
+	            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">我的居民</span>
+	        </a>
+	        <a href="#tab2" class="tab-link" style="padding-top: 2px;padding-bottom: 6px;">
+	            <i class="icon icon-fill f7-icons size-22">
+	            	gear
+	            	<!--  
+	            	<span class="badge color-red" >5</span>
+	            	-->
+	            </i>
+	            <span class="tabbar-label" style="font-size:10px;line-height:1.1;margin-left:0px;margin-top:1px">个人设置</span>
+	        </a>
+		</div>
+	</div>
+	<div class="tabs">
+		<div id="tab1" v-on:scroll.passive="onScroll" @tab:show="onShowTab"  class="tab tab-main tab-active page-content infinite-scroll-content">
+			<div class="list users-list" style="margin-top: 60px;">
+		      <ul>
+		        <li v-for="user in users">
+					<a v-on:click="detail(user)" class="item-link">
+						<div class="item-content">
+							<div class="item-media">
+								 <i :class="'fa fa-'+user.sex" :style="'color:'+(user.sex=='male'?'green;font-size:20px;':(user.sex=='female'?'red;font-size:20px;':'black;font-size:16px;'))"></i>
+							</div>
+							<div class="item-inner">
+								<div class="detail">
+									<div class="name">{{user.name}}</div> 
+								</div>
+							</div>
+						</div>
+					</a>
+				 </li>
+		       
+		      </ul>
+		    </div>
+	    	<div class="preloader infinite-scroll-preloader" style="animation:null">
+	    		<i class="fa fa-spinner fa-pulse" style="font-size:36px"></i>
+	    	</div>
+	    	<div class="fab fab-left-center" style="left:0;" v-on:click="favorites">
+			    <a href="#" style="border-radius:0px 100px 100px 0px;width: 40px;height: 35px;">
+			      <i class="icon f7-icons">star_round_fill</i>
+			    </a>
+			</div>
+		</div>
+		<div id="tab2" v-on:scroll.passive="onScroll" @tab:show="onShowTab"  class="tab page-content">
+			<div class="settings-view">
+				<div class="list user-profile">
+					<ul>
+						<li>
+							<a class="item-link">
+								<div class="item-content">
+									<div class="item-media">
+									<img  class="avatar" src="img/head.png">
+									</div>
+									<div class="item-inner">
+										<div class="detail">
+											<div class="name">{{name}}</div> 
+											<div class="location">
+												<span>职称: </span> 
+												<span class="">{{jobTitle}}</span>
+											</div>
+											<div class="location">
+												<span>单位: </span> 
+												<span class="">{{unit}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div> 
+				<div class="list">
+					<ul>
+					   
+					    <li>
+							<a v-on:click="myQr" class="item-link pb">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:10px">qrcode</i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">我的二维码</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a v-on:click="changePwd" class="item-link">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:10px">lock</i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">密码修改</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a v-on:click="about" class="item-link">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:10px">info_round</i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">关于我们</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a v-on:click="logout" class="item-link">
+								<div class="item-content">
+									<div class="item-media">
+										<i class="f7-icons" style="color:#fc3;font-size:20px;margin-top:10px">exit_round</i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">安全退出</div>
+									</div>
+								</div>
+							</a>
+						</li>
+					 </ul>
+				</div> 
+			</div>
+		</div>
+	</div>
+	<div class="popup popup-search">
+		<div class="view view-popup">
+		<div class="navbar">
+		  <div class="navbar-inner">
+		    <div class="left">
+		    	<a   href="#" class="link color-white popup-close">
+              		<i class="f7-icons" style="font-size:22px;">chevron_left</i>
+        		</a>
+		    </div>
+		    <div class="center title">条件查询</div>
+		    <div class="right">
+		    	<a v-on:click="searchMulti"  href="#" class="link color-white">
+              		<i class="f7-icons" style="font-size:22px;">search</i>
+        		</a>
+		    </div>
+		  </div>
+		</div>
+	    <div class="block" style="margin-top:60px;">
+			<div id="conditionQuery" class="list inline-labels no-hairlines-md" style="margin-top:25px">
+			  <a href="#" v-on:click="openSexSelect" class="item-link smart-select sex-smart-select" routableModals>
+		        <select name="性别" v-model="querySex">
+		          <option value="1">男</option>
+		          <option value="2">女</option>
+		        </select>
+		        <div class="item-content">
+		          <div class="item-inner">
+		            <div class="item-title">性别</div>
+		            <div class="item-after">男</div>
+		          </div>
+		        </div>
+			  </a>
+			  
+			  <a href="#">
+			  	<div class="item-content">
+		          <div class="item-inner">
+			          <div class="item-title">年龄</div>
+			          <div class="item-after">
+			              <div style="width:200px;">
+						  <ul style="width:100%;">
+						    <li class="item-row">
+						      <div class="item-cell width-auto flex-shrink-0">
+						        <i class="fa fa-child"></i>
+						      </div>
+						      <div class="item-cell item-cell-shrink-3">
+						        <!-- Dual range slider with all the parameters passed via data- attributes -->
+						        <div
+						          id="price-filter"
+						          class="range-slider age-range-slider color-green"
+						          data-label="true"
+						          data-dual="true"
+						          data-min="0"
+						          data-max="100"
+						          data-step="1"
+						          data-value-left="0"
+						          data-value-right="100"
+						        ></div>
+						      </div>
+						      <div class="item-cell width-auto flex-shrink-0">
+						        <i class="icon f7-icons if-not-md">person</i>
+						      </div>
+						    </li>
+						  </ul>
+						  </div>
+				  	  </div>
+			  	  </div>
+			  	</div>
+			  </a>
+			  <a href="#" v-on:click="openManSelect" class="item-link smart-select man-smart-select" routableModals>
+		        <select name="慢病" multiple v-model="querySicks">
+		          <option value="1">高血压</option>
+		          <option value="2">冠心病</option>
+		          <option value="3">高脂血症</option>
+		          <option value="4">糖尿病</option>
+		          <option value="5">脑血管疾病</option>
+		          <option value="6">慢性胃炎</option>
+		          <option value="7">胃溃疡</option>
+		          <option value="8">支气管哮喘</option>
+		          <option value="9">慢性阻塞性肺疾病（COPD）</option>
+		          <option value="10">骨质疏松症</option>
+		          <option value="11">青光眼</option>
+		          <option value="12">白内障</option>
+		        </select>
+		        <div class="item-content">
+		          <div class="item-inner">
+		            <div class="item-title">慢病</div>
+		            <div class="item-after">男</div>
+		          </div>
+		        </div>
+			  </a>
+		 	</div>
+	    </div>
+	    </div>
+	 </div>
+	 
+</div>

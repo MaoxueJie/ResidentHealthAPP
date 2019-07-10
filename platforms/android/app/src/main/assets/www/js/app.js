@@ -1,13 +1,13 @@
 
-define(["./moudles/main/index","./settings"],function(){
+define(["./moudles/home/index","./settings"],function(){
    var settings = require("./settings");
    require.config({
 		...settings
    });
-
+   
    var router = new VueRouter({
 		routes: [
-			
+			{ path: '/', component: {template:"<div></div>"} },
 		]
    });
    
@@ -50,11 +50,6 @@ define(["./moudles/main/index","./settings"],function(){
 		
    });
    
-   
-   var main = require("./moudles/main/index");
-   router.addRoutes(main);
-   router.push("/")
-   
    document.addEventListener('deviceReady',function(){
        window.JPush.init();
        window.JPush.isPushStopped(function (result) {
@@ -92,24 +87,26 @@ define(["./moudles/main/index","./settings"],function(){
 	  el: '#app',
 	  data() {
 		    return {
-		      // Framework7 parameters that we pass to <f7-app> component
 		      f7params: {
-		        // Array with app routes
-		        //routes: router,
-		        // App Name
 		        name: 'health',
 		        theme: 'ios',
-		        // App id
 		        id: 'com.breeze.health',
 		        panels3d: {
 		            enabled: true,
 		        },
-		        
-		        // ...
 		      }
 		    };
 	  },
-	  router
+	  router,
+	  mounted() {
+	      this.$f7ready((f7) => {
+	        f7.views.create('.view-main');
+	        require(["moudles/home/index"],function(home){
+	        	router.addRoutes(home);
+		 		router.push("/home");
+	        });
+	      });
+	  },
 	});
 	return app
 });

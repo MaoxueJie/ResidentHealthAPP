@@ -1,10 +1,13 @@
 define(["lib/text!./view.html","./components/base",
 	"./components/living","./components/phy",
 	"./components/psy","./components/sick"
-	,"./components/tcm"],function(view,base,living,phy,psy,sick,tcm){
+	,"./components/tcm","api/api"],function(view,base,living,phy,psy,sick,tcm,{checkFavorites,addFavorites,removeFavorites}){
 	var methods = {
 	   back(){
 		   this.$router.back();
+	   },
+	   call(mobile){
+		   window.location.href="tel:"+mobile;
 	   },
 	   base(id){
 		   console.log("info:" + id);
@@ -30,11 +33,56 @@ define(["lib/text!./view.html","./components/base",
 		   console.log("tcm:" + id);
 		   this.$router.push({path:"/tcm",query:{userId:id}});
 	   },
+	   add(userId){
+		   let param = {
+				userId:userId
+		   };
+		   addFavorites(param).then(res=>{
+			  if (res.data.success)
+			  {
+				  this.showFavorites = false;
+				  this.check(userId);
+			  }
+		   })
+	   },
+	   remove(userId){
+		   let param = {
+				userId:userId
+		   };
+		   removeFavorites(param).then(res=>{
+			  if (res.data.success)
+			  {
+				  this.showFavorites = false;
+				  this.check(userId);
+			  }
+		   })
+	   },
+	   check(userId){
+		  let param = {
+			  userId:userId
+		  };
+		  checkFavorites(param).then(res=>{
+			  if (res.data)
+			  {
+				  this.showFavorites = true;
+				  this.favorites = res.data.success;
+			  }
+		  }) 
+	   }
 	};
 	
 	const detail = Vue.component("detail",{
+		  data() {
+			  return {
+				  showFavorites: false,
+				  favorites: false,
+			  };
+		  },
 		  template:view,
-		  methods: methods
+		  methods: methods,
+		  mounted(){
+			  this.check(this.$route.query.userId)
+		  },
 	});
 	
 	return [
