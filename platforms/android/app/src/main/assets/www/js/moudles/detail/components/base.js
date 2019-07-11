@@ -8,7 +8,7 @@ define(["lib/text!./base.html","api/api"],function(view,{getBase}){
 			userId:this.$route.query.userId
 		  }
 		  getBase(param).then(res=>{
-			  console.log(res);
+			  //console.log(res);
 			  if (res.data.data)
 				  this.base = res.data.data;
 			  else

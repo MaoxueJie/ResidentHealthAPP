@@ -10,27 +10,27 @@ define(["lib/text!./view.html","./components/base",
 		   window.location.href="tel:"+mobile;
 	   },
 	   base(id){
-		   console.log("info:" + id);
+		   //console.log("info:" + id);
 		   this.$router.push({path:"/base",query:{userId:id}});
 	   },
 	   living(id){
-		   console.log("living:" + id);
+		   //console.log("living:" + id);
 		   this.$router.push({path:"/living",query:{userId:id}});
 	   },
 	   phy(id){
-		   console.log("phy:" + id);
+		   //console.log("phy:" + id);
 		   this.$router.push({path:"/phy",query:{userId:id}});
 	   },
 	   psy(id){
-		   console.log("psy:" + id);
+		   //console.log("psy:" + id);
 		   this.$router.push({path:"/psy",query:{userId:id}});
 	   },
 	   sick(id){
-		   console.log("sick:" + id);
+		   //console.log("sick:" + id);
 		   this.$router.push({path:"/sick",query:{userId:id}});
 	   },
 	   tcm(id){
-		   console.log("tcm:" + id);
+		   //console.log("tcm:" + id);
 		   this.$router.push({path:"/tcm",query:{userId:id}});
 	   },
 	   add(userId){

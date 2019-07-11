@@ -91,7 +91,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   {
 	    	   this.loading = true;
 	    	   getSicks(param).then(res=>{
-	    		   console.log(res);
+	    		   //console.log(res);
 	    		   if (res.data.success){
 	    			   that.page ++;
 	    			   for(var i=0;i<res.data.data.length;i++){
@@ -148,6 +148,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		  activated() {
 			  document.getElementById("tab1").scrollTop = this.offsetTops["tab1"]|0;
 			  document.getElementById("tab2").scrollTop = this.offsetTops["tab2"]|0;
+			  document.getElementById("tab3").scrollTop = this.offsetTops["tab3"]|0;
 		  },
 		  mounted(){
 			  getUser().then(res=>{

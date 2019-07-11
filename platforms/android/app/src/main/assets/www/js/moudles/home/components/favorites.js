@@ -18,7 +18,7 @@ define(["lib/text!./favorites.html","api/api"],function(view,{getFavoriteSicks})
     	   {
 	    	   this.loading = true;
 	    	   getFavoriteSicks(param).then(res=>{
-	    		   console.log(res);
+	    		   //console.log(res);
 	    		   if (res.data.success){
 	    			   that.page ++;
 	    			   for(var i=0;i<res.data.data.length;i++){
