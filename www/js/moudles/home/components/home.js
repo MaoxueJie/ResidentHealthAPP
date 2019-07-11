@@ -14,6 +14,12 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
        onShowTab(e){
     	   e.target.scrollTop =  this.offsetTops[e.target.id]|0;
     	   this.searchable = this.$$('.tab-main').hasClass('tab-active');
+    	   if (this.$$('.tab-iframe').hasClass('tab-active'))
+    	   {
+    		   var iframe = document.getElementById("study");
+    		   if (!iframe.src)
+    			   iframe.src = " http://health1.baiduux.com/h5/health1.html"
+    	   }
        },
        logout(){
     	   localStorage.removeItem("token");
