@@ -7,7 +7,25 @@ define(["./moudles/home/index","./settings"],function(){
    
    var router = new VueRouter({
 		routes: [
-			{ path: '/', component: {template:"<div></div>"} },
+			{ 
+				path: '/', 
+				component: {
+					template:"<div></div>",
+					methods:{
+						quite(){
+							this.$router.back();
+						}
+					},
+					beforeRouteEnter (to, from, next) {
+						 if (from && from.path == "/home"){
+							 next(vm=>vm.quite());
+						 }else
+						 {
+							 next();
+						 }
+					}
+				} 
+			},
 		]
    });
    

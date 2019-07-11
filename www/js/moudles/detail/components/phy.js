@@ -8,7 +8,7 @@ define(["lib/text!./phy.html","api/api"],function(view,{getPhy}){
 				userId:this.$route.query.userId
 			  }
 			  getPhy(param).then(res=>{
-				  console.log(res);
+				  //console.log(res);
 				  if (res.data.data)
 					  this.phy = res.data.data;
 				  else

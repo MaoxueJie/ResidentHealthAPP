@@ -8,7 +8,7 @@ define(["lib/text!./sick.html","api/api"],function(view,{getSick}){
 				userId:this.$route.query.userId
 			  }
 			  getSick(param).then(res=>{
-				  console.log(res);
+				  //console.log(res);
 				  if (res.data.data)
 					  this.sick = res.data.data;
 				  else

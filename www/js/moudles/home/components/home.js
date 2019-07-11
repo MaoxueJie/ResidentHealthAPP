@@ -91,7 +91,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   {
 	    	   this.loading = true;
 	    	   getSicks(param).then(res=>{
-	    		   console.log(res);
+	    		   //console.log(res);
 	    		   if (res.data.success){
 	    			   that.page ++;
 	    			   for(var i=0;i<res.data.data.length;i++){

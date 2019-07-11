@@ -6,7 +6,7 @@ define(["text!./view.html","api/api"],function(view,{login}){
 				  password:this.password
 		  }
 		  login(param).then(res=>{
-			  console.log(res);
+			  //console.log(res);
 			  if (res.data.success)
 			  {
 				  this.user = "";
