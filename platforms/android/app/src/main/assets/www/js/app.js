@@ -13,14 +13,13 @@ define(["./moudles/home/index","./settings"],function(){
 					template:"<div></div>",
 					methods:{
 						quite(){
-							window.alert();
 							this.$router.back();
 						}
 					},
 					beforeRouteEnter (to, from, next) {
 						 if (from && from.path == "/home"){
-							 window.alert();
-							 next(vm=>vm.quite());
+							 navigator.app.exitApp();
+							 //next(vm=>vm.quite());
 						 }else
 						 {
 							 next();
