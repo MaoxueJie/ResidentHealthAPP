@@ -56,7 +56,7 @@
 							</div>
 							<div class="item-inner">
 								<div class="detail">
-									<div class="name">{{user.name}}</div> 
+									<div class="name">{{user.name}}<template v-if="user.age">({{user.age}}岁)</template></div> 
 								</div>
 							</div>
 						</div>
@@ -82,10 +82,10 @@
 				<div class="list user-profile">
 					<ul>
 						<li>
-							<a class="item-link">
+							<a class="item-link" v-on:click="myQr">
 								<div class="item-content">
 									<div class="item-media">
-									<img  class="avatar" src="img/head.png">
+									<img id="avatar" class="avatar" src="img/head.png">
 									</div>
 									<div class="item-inner">
 										<div class="detail">
@@ -99,6 +99,7 @@
 												<span class="">{{unit}}</span>
 											</div>
 										</div>
+										<i class="f7-icons" style="color:#fc3;font-size:18px;">qrcode</i>
 									</div>
 								</div>
 							</a>
@@ -107,9 +108,9 @@
 				</div> 
 				<div class="list">
 					<ul>
-					   
+					    <!-- 
 					    <li>
-							<a v-on:click="myQr" class="item-link pb">
+							<a  class="item-link pb">
 								<div class="item-content">
 									<div class="item-media">
 										<i class="f7-icons" style="color:#fc3;font-size:18px;margin-top:10px">qrcode</i>
@@ -120,6 +121,7 @@
 								</div>
 							</a>
 						</li>
+						 -->
 						<li>
 							<a v-on:click="changePwd" class="item-link">
 								<div class="item-content">

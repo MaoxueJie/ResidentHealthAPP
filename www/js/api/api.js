@@ -51,7 +51,16 @@ define(["lib/axios.min","lib/qs"],function(axios,Qs){
 	const addFavorites = params => { return axios.get(`${base}favorites/add`, {params:params}).then(res => res);};
 	const removeFavorites = params => { return axios.get(`${base}favorites/remove`, {params:params}).then(res => res);};
 	
-	return {login,getUser,changePwd,getSicks,getBase,getLiving,getPhy,getPsy,getSick,getFavoriteSicks,checkFavorites,addFavorites,removeFavorites,test};
+	const getLivingDate = params => { return axios.get(`${base}living/date`, {params:params}).then(res => res);};
+	const getLivingId = params => { return axios.get(`${base}living/id`, {params:params}).then(res => res);};
+	
+	const getPhyDate = params => { return axios.get(`${base}phy/date`, {params:params}).then(res => res);};
+	const getPhyId = params => { return axios.get(`${base}phy/id`, {params:params}).then(res => res);};
+	
+	const getPsyDate = params => { return axios.get(`${base}psy/date`, {params:params}).then(res => res);};
+	const getPsyId = params => { return axios.get(`${base}psy/id`, {params:params}).then(res => res);};
+	
+	return {login,getUser,changePwd,getSicks,getBase,getLiving,getPhy,getPsy,getSick,getFavoriteSicks,checkFavorites,addFavorites,removeFavorites,test,getLivingDate,getLivingId,getPhyDate,getPhyId,getPsyDate,getPsyId};
 	
 	
 });

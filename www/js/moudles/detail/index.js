@@ -80,8 +80,8 @@ define(["lib/text!./view.html","./components/base",
 		  },
 		  template:view,
 		  methods: methods,
-		  mounted(){
-			  this.check(this.$route.query.userId)
+		  beforeRouteEnter(to,from,next){ 
+		      next(vm=>vm.check(vm.$route.query.userId))
 		  },
 	});
 	

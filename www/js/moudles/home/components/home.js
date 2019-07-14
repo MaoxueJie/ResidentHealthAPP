@@ -18,7 +18,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   {
     		   var iframe = document.getElementById("study");
     		   if (!iframe.src)
-    			   iframe.src = " http://health1.baiduux.com/h5/health1.html"
+    			   iframe.src = "http://pku_ehealth.baiduux.com/h5/cfbff22c-82be-d15c-1dea-6aba6fb1e276.html"
     	   }
        },
        logout(){
@@ -101,7 +101,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 	    		   if (res.data.success){
 	    			   that.page ++;
 	    			   for(var i=0;i<res.data.data.length;i++){
-	    				   that.users.push({name:res.data.data[i].mobile,sex:res.data.data[i].gender?(res.data.data[i].gender==1?'male':res.data.data[i].gender==2?'female':'user-o'):'user-o',id:res.data.data[i].userId});
+	    				   that.users.push({name:res.data.data[i].mobile,sex:res.data.data[i].gender?(res.data.data[i].gender==1?'male':res.data.data[i].gender==2?'female':'user-o'):'user-o',id:res.data.data[i].userId,age:res.data.data[i].age});
 	    			   }
 	    			   if (that.page>10 || res.data.data.length<that.size)
 	    			   {
@@ -162,6 +162,12 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 				  this.jobTitle = res.data.data.jobTitle;
 				  this.unit = res.data.data.unit;
 				  this.qr = res.data.data.qr;
+				  
+				  /*
+				  var qrCodeImage = localStorage.getItem(this.qr);
+		    	  if (qrCodeImage){
+		    		  document.getElementById("avatar").src=qrCodeImage;
+		    	  }*/
 			  });
 			  
 			  var that = this;
@@ -200,6 +206,8 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		    		  }
 	    		  }
 	    	  });
+	    	  
+	    	  
 			  
 		  },
 	})
