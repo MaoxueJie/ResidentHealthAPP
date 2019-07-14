@@ -12,197 +12,213 @@
 	  </div>
 	</div>
 	<div class="page-content"> 
-		<form class="list" style="margin-top:18px">
-			<ul>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">身高</div>
-							<div class="item-input-wrap">
-								{{phy.heightStr}}
+		<div class="toolbar tabbar tabbar-scrollable toolbar-top" style="top:10px">
+		    <div class="toolbar-inner">
+		      <a href="#tab" class="tab-link tab-link-active" v-on:click="getPhy()">动态结果</a>
+		      <template v-for="date in dates">
+		      	<a :href="'#tab'+date.id" class="tab-link" v-on:click="getPhy(date.id)">{{date.dateStr}}</a>
+		      </template>
+		    </div>
+		</div>
+		<div class="tabs">
+		      <div id="tab" class="tab tab-active"></div>
+			  <template v-for="date in dates">
+		      	<div :id="'tab'+date.id" class="tab"></div>
+		      </template>
+		</div> 
+		<div v-if="phy">
+			<form class="list" style="margin-top:10px">
+				<ul>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">身高</div>
+								<div class="item-input-wrap">
+									{{phy.heightStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">体重</div>
-							<div class="item-input-wrap">
-								{{phy.weightStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">体重</div>
+								<div class="item-input-wrap">
+									{{phy.weightStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">BMI</div>
-							<div class="item-input-wrap">
-								{{phy.bmistr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">BMI</div>
+								<div class="item-input-wrap">
+									{{phy.bmistr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">腰围</div>
-							<div class="item-input-wrap">
-								{{phy.abdominalCircumferenceStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">腰围</div>
+								<div class="item-input-wrap">
+									{{phy.abdominalCircumferenceStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">臀围</div>
-							<div class="item-input-wrap">
-								{{phy.hipCircumferenceStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">臀围</div>
+								<div class="item-input-wrap">
+									{{phy.hipCircumferenceStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">WHR(腰臀比)</div>
-							<div class="item-input-wrap">
-								{{phy.whrstr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">WHR(腰臀比)</div>
+								<div class="item-input-wrap">
+									{{phy.whrstr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">心率</div>
-							<div class="item-input-wrap">
-								{{phy.heartRateStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">心率</div>
+								<div class="item-input-wrap">
+									{{phy.heartRateStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">呼吸</div>
-							<div class="item-input-wrap">
-								{{phy.breatheRateStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">呼吸</div>
+								<div class="item-input-wrap">
+									{{phy.breatheRateStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">体温</div>
-							<div class="item-input-wrap">
-								{{phy.temperatureStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">体温</div>
+								<div class="item-input-wrap">
+									{{phy.temperatureStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">血压测量频率</div>
-							<div class="item-input-wrap">
-								{{phy.bloodPressureStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">血压测量频率</div>
+								<div class="item-input-wrap">
+									{{phy.bloodPressureStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">血糖测试频率</div>
-							<div class="item-input-wrap">
-								{{phy.bloodSugarStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">血糖测试频率</div>
+								<div class="item-input-wrap">
+									{{phy.bloodSugarStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">血脂测试频率</div>
-							<div class="item-input-wrap">
-								{{phy.bloodLipidStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">血脂测试频率</div>
+								<div class="item-input-wrap">
+									{{phy.bloodLipidStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">尿酸测试频率</div>
-							<div class="item-input-wrap">
-								{{phy.uricAcidStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">尿酸测试频率</div>
+								<div class="item-input-wrap">
+									{{phy.uricAcidStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">血氧饱和度测试频率</div>
-							<div class="item-input-wrap">
-								{{phy.bloodOxygenStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">血氧饱和度测试频率</div>
+								<div class="item-input-wrap">
+									{{phy.bloodOxygenStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">血压值</div>
-							<div class="item-input-wrap">
-								{{phy.bloodPressureValStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">血压值</div>
+								<div class="item-input-wrap">
+									{{phy.bloodPressureValStr}}
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">血糖值</div>
-							<div class="item-input-wrap" style="white-space: pre-wrap;">{{phy.bloodSugarValStr}}</div>
-						</div>
-					</div>
-				</li>
-				
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">血脂值</div>
-							<div class="item-input-wrap" style="white-space: pre-wrap;">{{phy.bloodLipidValStr}}</div>
-						</div>
-					</div>
-				</li>
-				
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">血尿酸</div>
-							<div class="item-input-wrap">
-								{{phy.uricAcidValStr}}
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">血糖值</div>
+								<div class="item-input-wrap" style="white-space: pre-wrap;">{{phy.bloodSugarValStr}}</div>
 							</div>
 						</div>
-					</div>
-				</li>
-				<li>
-					<div class="item-content item-input">
-						<div class="item-inner">
-							<div class="item-title item-label">血氧饱和度</div>
-							<div class="item-input-wrap">
-								{{phy.bloodOxygenValStr}}
+					</li>
+					
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">血脂值</div>
+								<div class="item-input-wrap" style="white-space: pre-wrap;">{{phy.bloodLipidValStr}}</div>
 							</div>
 						</div>
-					</div>
-				</li>
-			</ul>
-		</form>
+					</li>
+					
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">血尿酸</div>
+								<div class="item-input-wrap">
+									{{phy.uricAcidValStr}}
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="item-content item-input">
+							<div class="item-inner">
+								<div class="item-title item-label">血氧饱和度</div>
+								<div class="item-input-wrap">
+									{{phy.bloodOxygenValStr}}
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</form>
+		</div>
     </div>
 </div>

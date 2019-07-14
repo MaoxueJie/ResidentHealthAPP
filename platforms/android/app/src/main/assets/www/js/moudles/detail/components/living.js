@@ -1,4 +1,4 @@
-define(["lib/text!./living.html","api/api"],function(view,{getLiving}){
+define(["lib/text!./living.html","api/api"],function(view,{getLiving,getLivingDate,getLivingId}){
 	var methods = {
 	   back(){
 		   this.$router.back();
@@ -7,6 +7,7 @@ define(["lib/text!./living.html","api/api"],function(view,{getLiving}){
 			  let param = {
 				userId:this.$route.query.userId
 			  }
+			  /*
 			  getLiving(param).then(res=>{
 				  //console.log(res);
 				  if (res.data.data)
@@ -14,12 +15,37 @@ define(["lib/text!./living.html","api/api"],function(view,{getLiving}){
 				  else
 					  this.living = "";
 			  });
-		}
+			  */
+			  getLivingDate(param).then(res=>{
+				  if (res.data.data)
+				  {
+					  this.dates = res.data.data;
+				  }
+			  });
+		},
+		getLiving(id){
+			if (id)
+			{
+				let param = {
+						id:id
+				}
+				getLivingId(param).then(res=>{
+					  if (res.data.data)
+						  this.living = res.data.data;
+					  else
+						  this.living = "";
+				});
+			}else
+			{
+				this.living = "";
+			}
+		},
 	};
 	return Vue.component("living",{
 		  data() {
 		    return {
 		      living:"",
+		      dates:[],
 		    };
 		  },
 		  template:view,
