@@ -26,7 +26,14 @@
 		      	<div :id="'tab'+date.id" class="tab"></div>
 		      </template>
 		</div> 
-		<div v-if="phy">
+		<div :style="style">
+			<div id="height" style="width:100%;height:150px;"></div>
+			<div id="weight" style="width:100%;height:150px;"></div>
+			<div id="bloodPressure" style="width:100%;height:150px;"></div>
+			<div id="bloodSugar" style="width:100%;height:150px;"></div>
+			<div id="bloodLipid" style="width:100%;height:150px;"></div>
+		</div>
+		<div v-if="!charts" >
 			<form class="list" style="margin-top:10px">
 				<ul>
 					<li>
