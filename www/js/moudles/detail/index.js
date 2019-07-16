@@ -4,7 +4,7 @@ define(["lib/text!./view.html","./components/base",
 	,"./components/tcm","api/api"],function(view,base,living,phy,psy,sick,tcm,{checkFavorites,addFavorites,removeFavorites}){
 	var methods = {
 	   back(){
-		   this.$router.back();
+		   this.$router.go(-1);
 	   },
 	   call(mobile){
 		   window.location.href="tel:"+mobile;

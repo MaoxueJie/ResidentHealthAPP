@@ -44,11 +44,14 @@ define(["./moudles/home/index","./settings"],function(){
    };
    
    router.beforeEach((to, from, next) => {
+	   console.log("to:"+to.path + "   from:"+from.path)
 	   var i = to.matched.length;
 	   if (i>0)
 	   {
 		   if (to.path == '/login') {
 			   localStorage.removeItem("token");
+			   next()
+		   }else if(to.path == '/'){
 			   next()
 		   }else
 		   {
@@ -68,6 +71,11 @@ define(["./moudles/home/index","./settings"],function(){
 	   }
 		
    });
+   
+   router.afterEach((to, from) => {
+	   var i = to.matched.length;
+	   //console.log(to.path + ":" + i)
+   })
    
    router.push("/")
    
