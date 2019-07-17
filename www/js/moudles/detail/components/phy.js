@@ -24,7 +24,13 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 						  return val.dateStr;
 					  }).reverse();
 					  var heights = res.data.data.map(function(val){return val.height}).reverse()
-					  var heightChart = echarts.init(document.getElementById('height'));
+					  if (this.echarts.heightChart)
+					  {
+						  this.echarts.heightChart.clear();
+					  }else
+					  {
+						  this.echarts.heightChart = echarts.init(document.getElementById('height'));
+					  }
 					  var heightOption = {
 							    title: {
 							        text: '身高'
@@ -57,10 +63,16 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							        }
 							    ]
 							};
-					  heightChart.setOption(heightOption);
+					  this.echarts.heightChart.setOption(heightOption);
 					  
 					  var weights = res.data.data.map(function(val){return val.weight}).reverse()
-					  var weightChart = echarts.init(document.getElementById('weight'));
+					  if (this.echarts.weightChart)
+					  {
+						  this.echarts.weightChart.clear();
+					  }else
+					  {
+						  this.echarts.weightChart = echarts.init(document.getElementById('weight'));
+					  }
 					  var weightOption = {
 							    title: {
 							        text: '体重'
@@ -93,12 +105,19 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							        }
 							    ]
 							};
-					  weightChart.setOption(weightOption);
+					  this.echarts.weightChart.setOption(weightOption);
+					  console.log(this.echarts.weightChart);
 					  
 					  var bloodPressureVal5 = res.data.data.map(function(val){return val.bloodPressureVal5}).reverse()
 					  var bloodPressureVal6 = res.data.data.map(function(val){return val.bloodPressureVal6}).reverse()
 					  
-					  var bloodPressureChart = echarts.init(document.getElementById('bloodPressure'));
+					  if (this.echarts.bloodPressureChart)
+					  {
+						  this.echarts.bloodPressureChart.clear();
+					  }else
+					  {
+						  this.echarts.bloodPressureChart = echarts.init(document.getElementById('bloodPressure'));
+					  }
 					  var bloodPressureOption = {
 							    title: {
 							        text: '血压\n'
@@ -140,15 +159,20 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							        }
 							    ]
 							};
-					  bloodPressureChart.setOption(bloodPressureOption);
+					  this.echarts.bloodPressureChart.setOption(bloodPressureOption);
 					  
 					  
 					  var bloodSugarVal1 = res.data.data.map(function(val){return val.bloodSugarVal1}).reverse()
 					  var bloodSugarVal3 = res.data.data.map(function(val){return val.bloodSugarVal3}).reverse()
 					  var bloodSugarVal4 = res.data.data.map(function(val){return val.bloodSugarVal4}).reverse()
 					  
-					  
-					  var bloodSugarChart = echarts.init(document.getElementById('bloodSugar'));
+					  if (this.echarts.bloodSugarChart)
+					  {
+						  this.echarts.bloodSugarChart.clear();
+					  }else
+					  {
+						  this.echarts.bloodSugarChart = echarts.init(document.getElementById('bloodSugar'));
+					  }
 					  var bloodSugarOption = {
 							    title: {
 							        text: '血糖\n'
@@ -195,15 +219,20 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							        }
 							    ]
 							};
-					  bloodSugarChart.setOption(bloodSugarOption);
+					  this.echarts.bloodSugarChart.setOption(bloodSugarOption);
 					  
 					  var bloodLipidVal1 = res.data.data.map(function(val){return val.bloodLipidVal1}).reverse()
 					  var bloodLipidVal2 = res.data.data.map(function(val){return val.bloodLipidVal2}).reverse()
 					  var bloodLipidVal3 = res.data.data.map(function(val){return val.bloodLipidVal3}).reverse()
 					  var bloodLipidVal4 = res.data.data.map(function(val){return val.bloodLipidVal4}).reverse()
 					  
-					  
-					  var bloodLipidChart = echarts.init(document.getElementById('bloodLipid'));
+					  if (this.echarts.bloodLipidChart)
+					  {
+						  this.echarts.bloodLipidChart.clear();
+					  }else
+					  {
+						  this.echarts.bloodLipidChart = echarts.init(document.getElementById('bloodLipid'));
+					  }
 					  var bloodLipidOption = {
 							    title: {
 							        text: '血脂\n'
@@ -256,7 +285,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							        }
 							    ]
 							};
-					  bloodLipidChart.setOption(bloodLipidOption);
+					  this.echarts.bloodLipidChart.setOption(bloodLipidOption);
 				  }
 			  });
 	   },
@@ -285,6 +314,13 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 		      phy:"",
 		      dates:[],
 		      charts:true,
+		      echarts:{
+		    	  weightChart:null,
+		    	  heightChart:null,
+		    	  bloodPressureChart:null,
+		    	  bloodSugarChart:null,
+		    	  bloodLipidChart:null,
+		      }
 		    };
 		  },
 		  computed: {

@@ -115,6 +115,33 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 	    	   })
     	    }
        },
+       setData(){
+    	    if ((!localStorage.getItem("currentDataUser")) || localStorage.getItem("currentDataUser") != localStorage.getItem("token"))
+    	    {
+    	    	this.reload();
+    	    	getUser().then(res=>{
+	  				  this.name = res.data.data.name;
+	  				  this.jobTitle = res.data.data.jobTitle;
+	  				  this.unit = res.data.data.unit;
+	  				  this.qr = res.data.data.qr;
+    	    	});
+    	    	localStorage.setItem("currentDataUser",localStorage.getItem("token"))
+    	    }else
+    	    {
+    	    	if (this.users.length==0){
+    	    		this.reload();
+    	    	}
+    	    	if (!this.jobTitle)
+    	    	{
+    	    		getUser().then(res=>{
+  	  				  this.name = res.data.data.name;
+  	  				  this.jobTitle = res.data.data.jobTitle;
+  	  				  this.unit = res.data.data.unit;
+  	  				  this.qr = res.data.data.qr;
+    	    		});
+    	    	}
+    	    }
+       },
 	}
 	
 	return Vue.component("home",{
@@ -157,19 +184,6 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 			  document.getElementById("tab3").scrollTop = this.offsetTops["tab3"]|0;
 		  },
 		  mounted(){
-			  getUser().then(res=>{
-				  this.name = res.data.data.name;
-				  this.jobTitle = res.data.data.jobTitle;
-				  this.unit = res.data.data.unit;
-				  this.qr = res.data.data.qr;
-				  
-				  /*
-				  var qrCodeImage = localStorage.getItem(this.qr);
-		    	  if (qrCodeImage){
-		    		  document.getElementById("avatar").src=qrCodeImage;
-		    	  }*/
-			  });
-			  
 			  var that = this;
 			  this.$f7ready((f7) => {
 				  var infiniteScrollContent = this.$$('.infinite-scroll-content');
@@ -177,7 +191,6 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 				  this.$$('.infinite-scroll-content').on('infinite', function () {
 					  this.getSicks();
 				  });
-				  this.getSicks();
 			  });
 			  
 			  this.users=[],
@@ -205,10 +218,10 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		    			  that.queryAge = value;
 		    		  }
 	    		  }
-	    	  });
-	    	  
-	    	  
-			  
+	    	  });			  
+		  },
+		  beforeRouteEnter(to,from,next){ 
+		      next(vm=>vm.setData())
 		  },
 	})
 });
