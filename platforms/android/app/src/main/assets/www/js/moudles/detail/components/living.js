@@ -58,8 +58,13 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 						  return val.sittingDaysRecent7Days;
 					  }).reverse();
 					  
-					  
-					  var mealChart = echarts.init(document.getElementById('meal'));
+					  if (this.echarts.mealChart)
+					  {
+						  this.echarts.mealChart.clear();
+					  }else
+					  {
+						  this.echarts.mealChart = echarts.init(document.getElementById('meal'));
+					  }
 					  var mealOption = {
 							    title: {
 							        text: '饮食\n'
@@ -134,10 +139,15 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 							        }
 							    ]
 							};
-					  mealChart.setOption(mealOption);
+					  this.echarts.mealChart.setOption(mealOption);
 					  
-					  
-					  var movementChart = echarts.init(document.getElementById('movement'));
+					  if (this.echarts.movementChart)
+					  {
+						  this.echarts.movementChart.clear();
+					  }else
+					  {
+						  this.echarts.movementChart = echarts.init(document.getElementById('movement'));
+					  }
 					  var movementOption = {
 							    title: {
 							        text: '运动\n'
@@ -189,7 +199,7 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 							        }
 							    ]
 							};
-					  movementChart.setOption(movementOption);
+					  this.echarts.movementChart.setOption(movementOption);
 				  }
 			  });
 		},
@@ -219,6 +229,10 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 		      living:"",
 		      dates:[],
 		      charts:true,
+		      echarts:{
+		    	  mealChart:null,
+		    	  movementChart:null,
+		      }
 		    };
 		  },
 		  computed: {

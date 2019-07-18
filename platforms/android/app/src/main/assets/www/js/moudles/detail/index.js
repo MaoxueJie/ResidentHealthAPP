@@ -4,7 +4,7 @@ define(["lib/text!./view.html","./components/base",
 	,"./components/tcm","api/api"],function(view,base,living,phy,psy,sick,tcm,{checkFavorites,addFavorites,removeFavorites}){
 	var methods = {
 	   back(){
-		   this.$router.back();
+		   this.$router.go(-1);
 	   },
 	   call(mobile){
 		   window.location.href="tel:"+mobile;
@@ -42,6 +42,18 @@ define(["lib/text!./view.html","./components/base",
 			  {
 				  this.showFavorites = false;
 				  this.check(userId);
+				  this.$f7.toast.create({
+					  text: '已加入收藏夹',
+					  position: 'center',
+					  closeTimeout: 2000
+				  }).open();
+			  }else
+			  {
+				  this.$f7.toast.create({
+					  text: '收藏失败',
+					  position: 'center',
+					  closeTimeout: 2000
+				  }).open();
 			  }
 		   })
 	   },
@@ -54,6 +66,18 @@ define(["lib/text!./view.html","./components/base",
 			  {
 				  this.showFavorites = false;
 				  this.check(userId);
+				  this.$f7.toast.create({
+					  text: '删除成功',
+					  position: 'center',
+					  closeTimeout: 2000
+				  }).open();
+			  }else
+			  {
+				  this.$f7.toast.create({
+					  text: '删除失败',
+					  position: 'center',
+					  closeTimeout: 2000
+				  }).open();  
 			  }
 		   })
 	   },

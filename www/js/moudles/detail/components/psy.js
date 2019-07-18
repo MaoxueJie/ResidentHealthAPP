@@ -1,4 +1,4 @@
-define(["lib/text!./psy.html","api/api"],function(view,{getPsy,getPsyDate,getPsyId}){
+define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts,{getPsy,getPsyDate,getPsyId}){
 	var methods = {
 	   back(){
 		   this.$router.back();
@@ -19,11 +19,142 @@ define(["lib/text!./psy.html","api/api"],function(view,{getPsy,getPsyDate,getPsy
 				  if (res.data.data)
 				  {
 					  this.dates = res.data.data;
+					  var dateArray = res.data.data.map(function(val){
+						  return val.dateStr;
+					  }).reverse();
+					  var gad7s = res.data.data.map(function(val){return val.gad7Score}).reverse()
+					  if (this.echarts.gad7Chart)
+					  {
+						  this.echarts.gad7Chart.clear();
+					  }else
+					  {
+						  this.echarts.gad7Chart = echarts.init(document.getElementById('gad7'));
+					  }
+					  var gad7Option = {
+							    title: {
+							        text: 'GAD7'
+							    },
+							    tooltip: {
+							        trigger: 'axis'
+							    },
+							    grid: {
+							        left: '3%',
+							        right: '11%',
+							        bottom: '3%',
+							        containLabel: true
+							    },
+							    xAxis: {
+							        type: 'category',
+							        boundaryGap: false,
+							        data: dateArray,
+							    },
+							    yAxis: {
+							    	type: 'value',
+							    	axisLabel: {
+							            formatter:'{value} 分'
+							        },
+							    },
+							    series: [
+							        {
+							            name:'得分',
+							            type:'line',
+							            data:gad7s
+							        }
+							    ]
+							};
+					  this.echarts.gad7Chart.setOption(gad7Option);
+					  
+					  var phq9s = res.data.data.map(function(val){return val.phq9Score}).reverse()
+					  if (this.echarts.phq9Chart)
+					  {
+						  this.echarts.phq9Chart.clear();
+					  }else
+					  {
+						  this.echarts.phq9Chart = echarts.init(document.getElementById('phq9'));
+					  }
+					  var phq9Option = {
+							    title: {
+							        text: 'PHQ9'
+							    },
+							    tooltip: {
+							        trigger: 'axis'
+							    },
+							    grid: {
+							        left: '3%',
+							        right: '11%',
+							        bottom: '3%',
+							        containLabel: true
+							    },
+							    xAxis: {
+							        type: 'category',
+							        boundaryGap: false,
+							        data: dateArray,
+							    },
+							    yAxis: {
+							    	type: 'value',
+							    	axisLabel: {
+							            formatter:'{value} 分'
+							        },
+							    },
+							    series: [
+							        {
+							            name:'得分',
+							            type:'line',
+							            data:phq9s
+							        }
+							    ]
+							};
+					  this.echarts.phq9Chart.setOption(phq9Option);
+					  
+					  
+					  var ad8s = res.data.data.map(function(val){return val.ad8Score}).reverse()
+					  if (this.echarts.ad8Chart)
+					  {
+						  this.echarts.ad8Chart.clear();
+					  }else
+					  {
+						  this.echarts.ad8Chart = echarts.init(document.getElementById('ad8'));
+					  }
+					  var ad8Option = {
+							    title: {
+							        text: 'PHQ9'
+							    },
+							    tooltip: {
+							        trigger: 'axis'
+							    },
+							    grid: {
+							        left: '3%',
+							        right: '11%',
+							        bottom: '3%',
+							        containLabel: true
+							    },
+							    xAxis: {
+							        type: 'category',
+							        boundaryGap: false,
+							        data: dateArray,
+							    },
+							    yAxis: {
+							    	type: 'value',
+							    	axisLabel: {
+							            formatter:'{value} 分'
+							        },
+							    },
+							    series: [
+							        {
+							            name:'得分',
+							            type:'line',
+							            data:ad8s
+							        }
+							    ]
+							};
+					  this.echarts.ad8Chart.setOption(ad8Option);
 				  }
 			  });
 	   },
 	   getPsy(id){
 		    if(id){
+		    	this.charts = false;
+		    	this.psy = "";
 				let param = {
 					id:id
 				}
@@ -34,7 +165,7 @@ define(["lib/text!./psy.html","api/api"],function(view,{getPsy,getPsyDate,getPsy
 						  this.psy = "";
 				});
 		    }else{
-		    	 this.psy = "";
+		    	 this.charts = true;
 		    }
 		},
 	};
@@ -43,7 +174,18 @@ define(["lib/text!./psy.html","api/api"],function(view,{getPsy,getPsyDate,getPsy
 		    return {
 		      psy:"",
 		      dates:[],
+		      charts:true,
+		      echarts:{
+		    	  gad7Chart:null,
+		    	  phq9Chart:null,
+		    	  ad8Chart:null,
+		      }
 		    };
+		  },
+		  computed: {
+			  style() {
+		        return this.charts?"display:block;margin-top:15px":"display:none;margin-top:15px";
+		      }
 		  },
 		  template:view,
 		  methods: methods,
