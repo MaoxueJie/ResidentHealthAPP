@@ -26,7 +26,12 @@
 		      	<div :id="'tab'+date.id" class="tab"></div>
 		      </template>
 		</div> 
-		<div v-if="psy">
+		<div :style="style">
+			<div id="gad7" style="width:100%;height:150px;"></div>
+			<div id="phq9" style="width:100%;height:150px;"></div>
+			<div id="ad8" style="width:100%;height:150px;"></div>
+		</div>
+		<div v-if="!charts">
 			<div class="block-title" style="margin-top:15px">情绪筛查量表1<br>在过去的两周里, 你生活中以下症状出现的频率有多少？</div> 
 			<form class="list" style="margin-bottom:0">
 				<ul>

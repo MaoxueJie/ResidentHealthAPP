@@ -40,7 +40,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							    },
 							    grid: {
 							        left: '3%',
-							        right: '4%',
+							        right: '11%',
 							        bottom: '3%',
 							        containLabel: true
 							    },
@@ -82,7 +82,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							    },
 							    grid: {
 							        left: '3%',
-							        right: '4%',
+							        right: '11%',
 							        bottom: '3%',
 							        containLabel: true
 							    },
@@ -130,7 +130,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							    },
 							    grid: {
 							        left: '3%',
-							        right: '4%',
+							        right: '11%',
 							        bottom: '3%',
 							        containLabel: true
 							    },
@@ -185,7 +185,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							    },
 							    grid: {
 							        left: '3%',
-							        right: '4%',
+							        right: '11%',
 							        bottom: '3%',
 							        containLabel: true
 							    },
@@ -246,7 +246,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							    grid: {
 							    	top: '45%',
 							        left: '3%',
-							        right: '4%',
+							        right: '11%',
 							        bottom: '3%',
 							        containLabel: true
 							    },
