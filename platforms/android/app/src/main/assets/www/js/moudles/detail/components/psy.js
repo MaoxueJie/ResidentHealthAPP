@@ -22,7 +22,8 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  var dateArray = res.data.data.map(function(val){
 						  return val.dateStr;
 					  }).reverse();
-					  var gad7s = res.data.data.map(function(val){return val.gad7Score}).reverse()
+					  //var gad7s = res.data.data.map(function(val){return val.gad7Score}).reverse()
+					  var gad7s = res.data.data.map(function(val){return [val.gad7Score,val.dateStr]}).reverse()
 					  if (this.echarts.gad7Chart)
 					  {
 						  this.echarts.gad7Chart.clear();
@@ -30,6 +31,7 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  {
 						  this.echarts.gad7Chart = echarts.init(document.getElementById('gad7'));
 					  }
+					  /*
 					  var gad7Option = {
 							    title: {
 							        text: 'GAD7'
@@ -62,9 +64,45 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							        }
 							    ]
 							};
+							*/
+					  gad7s.unshift(['score', 'date'])
+					  var gad7Option = {
+							    title: {
+							        text: 'GAD7'
+							    },
+							    dataset: {
+							        source:gad7s
+							    },
+							    grid: {containLabel: true},
+							    yAxis: {name: '得分',min:0,max:30},
+							    xAxis: {type: 'category'},
+							    visualMap: {
+							        orient: 'horizontal',
+							        left: 'center',
+							        min: 0,
+							        max: 30,
+							        text: ['高', '低'],
+							        // Map the score column to color
+							        dimension: 0,
+							        inRange: {
+							            color: ['#D7DA8B', '#E15457']
+							        }
+							    },
+							    series: [
+							        {
+							            type: 'bar',
+							            encode: {
+							                y: 'score',
+							                x: 'date'
+							            },
+							            barWidth:"20px",
+							        }
+							    ]
+							};
 					  this.echarts.gad7Chart.setOption(gad7Option);
 					  
-					  var phq9s = res.data.data.map(function(val){return val.phq9Score}).reverse()
+					  //var phq9s = res.data.data.map(function(val){return val.phq9Score}).reverse()
+					  var phq9s = res.data.data.map(function(val){return [val.phq9Score,val.dateStr]}).reverse()
 					  if (this.echarts.phq9Chart)
 					  {
 						  this.echarts.phq9Chart.clear();
@@ -72,7 +110,7 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  {
 						  this.echarts.phq9Chart = echarts.init(document.getElementById('phq9'));
 					  }
-					  var phq9Option = {
+					  /*var phq9Option = {
 							    title: {
 							        text: 'PHQ9'
 							    },
@@ -103,11 +141,46 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							            data:phq9s
 							        }
 							    ]
+							};*/
+					  phq9s.unshift(['score', 'date'])
+					  var phq9Option = {
+							    title: {
+							        text: 'PHQ9'
+							    },
+							    dataset: {
+							        source:phq9s
+							    },
+							    grid: {containLabel: true},
+							    yAxis: {name: '得分',min:0,max:30},
+							    xAxis: {type: 'category'},
+							    visualMap: {
+							        orient: 'horizontal',
+							        left: 'center',
+							        min: 0,
+							        max: 30,
+							        text: ['高', '低'],
+							        // Map the score column to color
+							        dimension: 0,
+							        inRange: {
+							            color: ['#D7DA8B', '#E15457']
+							        }
+							    },
+							    series: [
+							        {
+							            type: 'bar',
+							            encode: {
+							                y: 'score',
+							                x: 'date'
+							            },
+							            barWidth:"20px",
+							        }
+							    ]
 							};
 					  this.echarts.phq9Chart.setOption(phq9Option);
 					  
 					  
-					  var ad8s = res.data.data.map(function(val){return val.ad8Score}).reverse()
+					  //var ad8s = res.data.data.map(function(val){return val.ad8Score}).reverse()
+					  var ad8s = res.data.data.map(function(val){return [val.ad8Score,val.dateStr]}).reverse()
 					  if (this.echarts.ad8Chart)
 					  {
 						  this.echarts.ad8Chart.clear();
@@ -115,9 +188,10 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  {
 						  this.echarts.ad8Chart = echarts.init(document.getElementById('ad8'));
 					  }
+					  /*
 					  var ad8Option = {
 							    title: {
-							        text: 'PHQ9'
+							        text: 'AD8'
 							    },
 							    tooltip: {
 							        trigger: 'axis'
@@ -144,6 +218,40 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							            name:'得分',
 							            type:'line',
 							            data:ad8s
+							        }
+							    ]
+							};*/
+					  ad8s.unshift(['score', 'date'])
+					  var ad8Option = {
+							    title: {
+							        text: 'AD8'
+							    },
+							    dataset: {
+							        source:ad8s
+							    },
+							    grid: {containLabel: true},
+							    yAxis: {name: '得分',min:0,max:30},
+							    xAxis: {type: 'category'},
+							    visualMap: {
+							        orient: 'horizontal',
+							        left: 'center',
+							        min: 0,
+							        max: 30,
+							        text: ['高', '低'],
+							        // Map the score column to color
+							        dimension: 0,
+							        inRange: {
+							            color: ['#D7DA8B', '#E15457']
+							        }
+							    },
+							    series: [
+							        {
+							            type: 'bar',
+							            encode: {
+							                y: 'score',
+							                x: 'date'
+							            },
+							            barWidth:"20px",
 							        }
 							    ]
 							};

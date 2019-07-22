@@ -19,7 +19,8 @@ define(["./moudles/home/index","./settings"],function(){
 					beforeRouteEnter (to, from, next) {
 						 if (from && from.path == "/home"){
 							 navigator.app.exitApp();
-							 //next(vm=>vm.quite());
+						 }else if (from && from.path == "/login"){
+							 navigator.app.exitApp();
 						 }else
 						 {
 							 next();
