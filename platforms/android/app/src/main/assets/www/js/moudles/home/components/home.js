@@ -17,6 +17,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   if (this.$$('.tab-iframe').hasClass('tab-active'))
     	   {
     		   var iframe = document.getElementById("study");
+    		   console.log(iframe.src)
     		   if (!iframe.src)
     			   iframe.src = "http://pku_ehealth.baiduux.com/h5/cfbff22c-82be-d15c-1dea-6aba6fb1e276.html"
     	   }
@@ -222,6 +223,11 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		  },
 		  beforeRouteEnter(to,from,next){ 
 		      next(vm=>vm.setData())
+		  },
+		  beforeRouteLeave(to,from,next){ 
+			  var iframe = document.getElementById("study");
+			  iframe.src="";
+			  next();
 		  },
 	})
 });
