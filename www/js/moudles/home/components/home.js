@@ -18,7 +18,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   {
     		   var iframe = document.getElementById("study");
     		   console.log(iframe.src)
-    		   if (!iframe.src)
+    		   if (!iframe.src || iframe.src!="http://pku_ehealth.baiduux.com/h5/cfbff22c-82be-d15c-1dea-6aba6fb1e276.html")
     			   iframe.src = "http://pku_ehealth.baiduux.com/h5/cfbff22c-82be-d15c-1dea-6aba6fb1e276.html"
     	   }
        },
