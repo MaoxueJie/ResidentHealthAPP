@@ -16,10 +16,9 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   this.searchable = this.$$('.tab-main').hasClass('tab-active');
     	   if (this.$$('.tab-iframe').hasClass('tab-active'))
     	   {
-    		   var iframe = document.getElementById("study");
-    		   console.log(iframe.src)
-    		   if (!iframe.src || iframe.src!="http://pku_ehealth.baiduux.com/h5/cfbff22c-82be-d15c-1dea-6aba6fb1e276.html")
-    			   iframe.src = "http://pku_ehealth.baiduux.com/h5/cfbff22c-82be-d15c-1dea-6aba6fb1e276.html"
+    		   var iframeDiv = document.getElementById("study");
+    		   if (!iframeDiv.innerHTML)
+    			   iframeDiv.innerHTML = "<iframe style='width:100%;height:100%;margin0;border:0' src='http://pku_ehealth.baiduux.com/h5/cfbff22c-82be-d15c-1dea-6aba6fb1e276.html'></iframe>";
     	   }
        },
        logout(){
@@ -225,8 +224,8 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		      next(vm=>vm.setData())
 		  },
 		  beforeRouteLeave(to,from,next){ 
-			  var iframe = document.getElementById("study");
-			  iframe.src="";
+			  var iframeDiv = document.getElementById("study");
+			  iframeDiv.innerHTML="";
 			  next();
 		  },
 	})
