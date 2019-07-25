@@ -22,8 +22,8 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  var dateArray = res.data.data.map(function(val){
 						  return val.dateStr;
 					  }).reverse();
-					  //var gad7s = res.data.data.map(function(val){return val.gad7Score}).reverse()
-					  var gad7s = res.data.data.map(function(val){return [val.gad7Score,val.dateStr]}).reverse()
+					  var gad7s = res.data.data.map(function(val){return val.gad7Score}).reverse()
+					  //var gad7s = res.data.data.map(function(val){return [val.gad7Score,val.dateStr]}).reverse()
 					  if (this.echarts.gad7Chart)
 					  {
 						  this.echarts.gad7Chart.clear();
@@ -31,7 +31,7 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  {
 						  this.echarts.gad7Chart = echarts.init(document.getElementById('gad7'));
 					  }
-					  /*
+					  
 					  var gad7Option = {
 							    title: {
 							        text: 'GAD7'
@@ -55,6 +55,8 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							    	axisLabel: {
 							            formatter:'{value} 分'
 							        },
+							        min:0,
+							        max:30
 							    },
 							    series: [
 							        {
@@ -62,9 +64,41 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							            type:'line',
 							            data:gad7s
 							        }
-							    ]
+							    ],
+							    visualMap: {
+							    	show:false,
+						            top: 10,
+						            right: 10,
+						            pieces: [{
+						                gt: 0,
+						                lte: 5,
+						                color: '#096'
+						            }, {
+						                gt: 5,
+						                lte: 10,
+						                color: '#ffde33'
+						            }, {
+						                gt: 10,
+						                lte: 15,
+						                color: '#ff9933'
+						            }, {
+						                gt: 15,
+						                lte: 20,
+						                color: '#cc0033'
+						            }, {
+						                gt: 20,
+						                lte: 25,
+						                color: '#660099'
+						            }, {
+						                gt: 25,
+						                color: '#7e0023'
+						            }],
+						            outOfRange: {
+						                color: '#999'
+						            }
+						        },
 							};
-							*/
+							/*
 					  gad7s.unshift(['score', 'date'])
 					  var gad7Option = {
 							    title: {
@@ -98,11 +132,11 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							            barWidth:"20px",
 							        }
 							    ]
-							};
+							};*/
 					  this.echarts.gad7Chart.setOption(gad7Option);
 					  
-					  //var phq9s = res.data.data.map(function(val){return val.phq9Score}).reverse()
-					  var phq9s = res.data.data.map(function(val){return [val.phq9Score,val.dateStr]}).reverse()
+					  var phq9s = res.data.data.map(function(val){return val.phq9Score}).reverse()
+					  //var phq9s = res.data.data.map(function(val){return [val.phq9Score,val.dateStr]}).reverse()
 					  if (this.echarts.phq9Chart)
 					  {
 						  this.echarts.phq9Chart.clear();
@@ -110,7 +144,7 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  {
 						  this.echarts.phq9Chart = echarts.init(document.getElementById('phq9'));
 					  }
-					  /*var phq9Option = {
+					  var phq9Option = {
 							    title: {
 							        text: 'PHQ9'
 							    },
@@ -133,6 +167,8 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							    	axisLabel: {
 							            formatter:'{value} 分'
 							        },
+							        min:0,
+							        max:30
 							    },
 							    series: [
 							        {
@@ -140,9 +176,41 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							            type:'line',
 							            data:phq9s
 							        }
-							    ]
-							};*/
-					  phq9s.unshift(['score', 'date'])
+							    ],
+							    visualMap: {
+							    	show:false,
+						            top: 10,
+						            right: 10,
+						            pieces: [{
+						                gt: 0,
+						                lte: 5,
+						                color: '#096'
+						            }, {
+						                gt: 5,
+						                lte: 10,
+						                color: '#ffde33'
+						            }, {
+						                gt: 10,
+						                lte: 15,
+						                color: '#ff9933'
+						            }, {
+						                gt: 15,
+						                lte: 20,
+						                color: '#cc0033'
+						            }, {
+						                gt: 20,
+						                lte: 25,
+						                color: '#660099'
+						            }, {
+						                gt: 25,
+						                color: '#7e0023'
+						            }],
+						            outOfRange: {
+						                color: '#999'
+						            }
+						        },
+							};
+							/*phq9s.unshift(['score', 'date'])
 					  var phq9Option = {
 							    title: {
 							        text: 'PHQ9'
@@ -175,12 +243,12 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							            barWidth:"20px",
 							        }
 							    ]
-							};
+							};*/
 					  this.echarts.phq9Chart.setOption(phq9Option);
 					  
 					  
-					  //var ad8s = res.data.data.map(function(val){return val.ad8Score}).reverse()
-					  var ad8s = res.data.data.map(function(val){return [val.ad8Score,val.dateStr]}).reverse()
+					  var ad8s = res.data.data.map(function(val){return val.ad8Score}).reverse()
+					  //var ad8s = res.data.data.map(function(val){return [val.ad8Score,val.dateStr]}).reverse()
 					  if (this.echarts.ad8Chart)
 					  {
 						  this.echarts.ad8Chart.clear();
@@ -188,7 +256,7 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  {
 						  this.echarts.ad8Chart = echarts.init(document.getElementById('ad8'));
 					  }
-					  /*
+					  
 					  var ad8Option = {
 							    title: {
 							        text: 'AD8'
@@ -212,6 +280,8 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							    	axisLabel: {
 							            formatter:'{value} 分'
 							        },
+							        min:0,
+							    	max:30
 							    },
 							    series: [
 							        {
@@ -219,9 +289,41 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							            type:'line',
 							            data:ad8s
 							        }
-							    ]
-							};*/
-					  ad8s.unshift(['score', 'date'])
+							    ],
+							    visualMap: {
+							    	show:false,
+						            top: 10,
+						            right: 10,
+						            pieces: [{
+						                gt: 0,
+						                lte: 5,
+						                color: '#096'
+						            }, {
+						                gt: 5,
+						                lte: 10,
+						                color: '#ffde33'
+						            }, {
+						                gt: 10,
+						                lte: 15,
+						                color: '#ff9933'
+						            }, {
+						                gt: 15,
+						                lte: 20,
+						                color: '#cc0033'
+						            }, {
+						                gt: 20,
+						                lte: 25,
+						                color: '#660099'
+						            }, {
+						                gt: 25,
+						                color: '#7e0023'
+						            }],
+						            outOfRange: {
+						                color: '#999'
+						            }
+						        },
+							};
+							/*ad8s.unshift(['score', 'date'])
 					  var ad8Option = {
 							    title: {
 							        text: 'AD8'
@@ -254,7 +356,7 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							            barWidth:"20px",
 							        }
 							    ]
-							};
+							};*/
 					  this.echarts.ad8Chart.setOption(ad8Option);
 				  }
 			  });
