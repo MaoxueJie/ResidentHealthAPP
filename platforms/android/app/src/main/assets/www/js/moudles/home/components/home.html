@@ -92,7 +92,8 @@
 		      <ul>
 		        <li class="item-content" v-for="msg in msgs" v-on:click="toMsgDetail(msg)">
 			        <div class="item-media">
-			        	<i class="f7-icons" v-if="!msg.logo" style="color:#fc3;font-size:30px;margin-top:5px">email</i>
+			        	<i class="fa fa-envelope-o icon-fill" v-if="!msg.logo && msg.status==0" style="color:#fc3;font-size:38px"></i>
+			        	<i class="fa fa-envelope-open-o icon-fill" v-if="!msg.logo && msg.status==1" style="color:#fc3;font-size:38px"></i>
 			        	<img v-if="msg.logo" :src="msg.logo" width="44">
 			        </div>
 			        <div class="item-inner">
