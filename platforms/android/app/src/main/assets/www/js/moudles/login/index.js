@@ -6,9 +6,16 @@ define(["text!./view.html","api/api"],function(view,{login}){
 				  password:this.password
 		  }
 		  login(param).then(res=>{
-			  //console.log(res);
 			  if (res.data.success)
 			  {
+				  if (window.JPush){
+					  window.JPush.setAlias({ sequence: 1, alias: this.user },
+					  (result) => {
+						console.log(error);
+					  }, (error) => {
+					    console.log(error);
+					  });
+				  }
 				  this.user = "";
 				  this.password = "";
 				  localStorage.setItem("token", res.data.data.token);
@@ -20,6 +27,7 @@ define(["text!./view.html","api/api"],function(view,{login}){
 				  {
 					  this.$router.replace("/home");
 				  }
+				  
 			  }else
 			  {
 				  this.$f7.toast.create({

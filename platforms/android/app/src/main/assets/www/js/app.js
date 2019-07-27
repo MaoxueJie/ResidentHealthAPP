@@ -89,25 +89,20 @@ define(["./moudles/home/index","./settings"],function(){
            //alert("关闭")// 关闭
          }
        })
+       
        document.addEventListener("jpush.openNotification", function (event) {
-         var alertContent
-         if(device.platform == "Android") {
-           alertContent = event.alert
-         } else {
-           alertContent = event.aps.alert
-         }
-         alert(alertContent)
-       }, false)
-       document.addEventListener("jpush.receiveNotification", function (event) {
-         var alertContent
-         if(device.platform == "Android") {
-           alertContent = event.alert
-         } else {
-           alertContent = event.aps.alert
-         }
-         alert("open Notification:" + alertContent)
-       }, false)
-
+			 var alertContent;
+			 var msgId;
+			 if(device.platform == "Android") {
+			   alertContent = event.alert
+			   msgId = event.extras.msgId;
+			 } else {
+			   alertContent = event.aps.alert
+			   msgId = event.msgId;
+			 }
+			 localStorage.setItem("msg", msgId);
+        }, false)
+		 	       
     },false);
 
     Framework7.use(Framework7Vue);

@@ -1,0 +1,42 @@
+<div class="page">
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <div class="left">
+	    	<a v-on:click="back" href="#" class="link color-white">
+              <i class="icon icon-back color-white"></i>
+              <span>返回</span>
+            </a>
+	    </div>
+	    <div class="center title">告警详情</div>
+	    <div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	  </div>
+	</div>
+	<div class="page-content"> 
+		<div class="block-title" style="margin-top:25px;text-align: center;">{{msg.title}}</div> 
+		<form class="list" style="margin-bottom:0">
+			<ul>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">内容:</div>
+							<div class="item-input-wrap" style="word-break: break-word;">
+								{{msg.msg}}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content item-input">
+						<div class="item-inner">
+							<div class="item-title item-label">时间:</div>
+							<div class="item-input-wrap">
+								{{formatDate(msg.createTime)}}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</form>
+		<button class="col button button-large button-fill" style="width:80%;margin:auto;margin-top:15px;" v-on:click="userDetail(msg)">查看居民</button>
+	</div>
+</div>

@@ -1,4 +1,4 @@
-define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}){
+define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMsgs,test}){
 	
 	var methods = {
 	   route(name){
@@ -38,8 +38,8 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   let url = this.qr;
     	   this.$router.push({path:"/qr",query:{qr:url}});
        },
-       detail(user){
-    	   this.$router.push({path:"/detail",query:{mobile:user.name,userId:user.id}});
+       detail(id,mobile){
+    	   this.$router.push({path:"/detail",query:{userId:id,mobile:mobile}});
        },
        test(){
     	   this.$router.push("/test");
@@ -81,6 +81,10 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	   this.page = 1;
     	   this.getSicks();
        },
+       reloadMsgs(){
+    	   this.msgPage = 1;
+    	   this.getMsgs();
+       },
        getSicks(){
     	   var app = this.$f7;
     	   var $$ = this.$$;
@@ -103,15 +107,53 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 	    			   for(var i=0;i<res.data.data.length;i++){
 	    				   that.users.push({name:res.data.data[i].mobile,sex:res.data.data[i].gender?(res.data.data[i].gender==1?'male':res.data.data[i].gender==2?'female':'user-o'):'user-o',id:res.data.data[i].userId,age:res.data.data[i].age});
 	    			   }
-	    			   if (that.page>10 || res.data.data.length<that.size)
+	    			   if (res.data.data.length<that.size)
 	    			   {
-	    				 app.infiniteScroll.destroy('.infinite-scroll-content');
-	    	    		 $$('.infinite-scroll-preloader').remove();
+	    				 app.infiniteScroll.destroy('.sicks-infinite-scroll');
+	    	    		 $$('.sicks_preloader').remove();
 	    			   }		   
 	    		   }
 
 	    		   this.loading = false;
 	    		   
+	    	   })
+    	    }
+       },
+       getMsgs(){
+    	   var app = this.$f7;
+    	   var $$ = this.$$;
+    	   let param = {
+    		  page:this.msgPage,
+    		  size:this.msgSize,
+    		  max:this.msgMax,
+    	   }
+    	   var that = this;
+    	   if (!this.msgLoading)
+    	   {
+	    	   this.msgLoading = true;
+	    	   getMsgs(param).then(res=>{
+	    		   //console.log(res);
+	    		   if (res.data.success){
+	    			   for(var i=0;i<res.data.data.length;i++){
+	    				   if (i==0&&that.msgPage==1)
+	    				   {
+	    					   that.msgMax = res.data.data[i].id;
+	    					   that.msgMin = res.data.data[i].id;
+	    				   }
+	    				   that.msgs.push({id:res.data.data[i].id,title:res.data.data[i].title,content:res.data.data[i].msg,logo:res.data.data[i].logo,status:res.data.data[i].status,param:JSON.parse(res.data.data[i].param)});
+	    			   }
+	    			   that.msgPage ++;
+	    			   if (that.msgMin == 0)
+	    			   {
+	    				   that.msgMin = 1;
+	    			   }
+	    			   if (res.data.data.length<that.msgSize)
+	    			   {
+	    				 app.infiniteScroll.destroy('.msgs-infinite-scroll');
+	    	    		 $$('.msgs_preloader').remove();
+	    			   }		   
+	    		   }
+	    		   this.msgLoading = false;
 	    	   })
     	    }
        },
@@ -131,6 +173,9 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	    	if (this.users.length==0){
     	    		this.reload();
     	    	}
+    	    	if (this.msgs.length==0){
+    	    		this.reloadMsgs();
+    	    	}
     	    	if (!this.jobTitle)
     	    	{
     	    		getUser().then(res=>{
@@ -141,6 +186,10 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
     	    		});
     	    	}
     	    }
+       },
+       toMsgDetail(msg){
+    	   msg.status=1;
+    	   this.$router.push({path:"/msg",query:{msgId:msg.id}});
        },
 	}
 	
@@ -165,6 +214,12 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		      searchPopup:null,
 		      sexSmartSelect:null,
 		      manSmartSelect:null,
+		      msgs:[],
+		      msgPage:1,
+		      msgSize:10,
+		      msgMax:0,
+		      msgMin:0,
+		      msgLoading:false,
 		    };
 		  },
 		  watch: {
@@ -182,15 +237,46 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 			  document.getElementById("tab1").scrollTop = this.offsetTops["tab1"]|0;
 			  document.getElementById("tab2").scrollTop = this.offsetTops["tab2"]|0;
 			  document.getElementById("tab3").scrollTop = this.offsetTops["tab3"]|0;
+			  document.getElementById("tab4").scrollTop = this.offsetTops["tab4"]|0;
 		  },
 		  mounted(){
 			  var that = this;
 			  this.$f7ready((f7) => {
-				  var infiniteScrollContent = this.$$('.infinite-scroll-content');
-				  f7.infiniteScroll.create(infiniteScrollContent);
-				  this.$$('.infinite-scroll-content').on('infinite', function () {
-					  this.getSicks();
+				  var sciks_infiniteScrollContent = this.$$('.sicks-infinite-scroll');
+				  f7.infiniteScroll.create(sciks_infiniteScrollContent);
+				  sciks_infiniteScrollContent.on('infinite', function () {
+					  that.getSicks();
 				  });
+				  
+				  var msgs_infiniteScrollContent = this.$$('.msgs-infinite-scroll');
+				  f7.infiniteScroll.create(msgs_infiniteScrollContent);
+				  msgs_infiniteScrollContent.on('infinite', function () {
+					  that.getMsgs();
+				  });
+				  
+				  var msgs_pullRefresh = this.$$('.ptr-content');
+				  f7.ptr.create(msgs_pullRefresh)
+				  msgs_pullRefresh.on('ptr:refresh', function () {
+					  let param = {
+						min:that.msgMin,
+				      }
+					  if (!that.msgLoading)
+			    	  {
+						  that.msgLoading = true;
+				    	   getMsgs(param).then(res=>{
+				    		   if (res.data.success){
+				    			   for(var i=0;i<res.data.data.length;i++){
+				    				   that.msgMin = res.data.data[i].id;
+				    				   that.msgs.unshift({id:res.data.data[i].id,title:res.data.data[i].title,content:res.data.data[i].msg,logo:res.data.data[i].logo,status:res.data.data[i].status,param:JSON.parse(res.data.data[i].param)});
+				    			   }
+				    		   }
+				    		   that.msgLoading = false;
+				    		   f7.ptr.done();
+				    	   });
+			    	  }
+					 
+				  });
+
 			  });
 			  
 			  this.users=[],
@@ -218,7 +304,14 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,test}
 		    			  that.queryAge = value;
 		    		  }
 	    		  }
-	    	  });			  
+	    	  });	
+	    	  
+	    	  var msgId = localStorage.getItem("msg");
+	    	  if (msgId)
+	    	  {
+	    		  localStorage.removeItem("msg");
+	    		  this.$router.push({path:"/msg",query:{msgId:msgId}});
+	    	  }
 		  },
 		  beforeRouteEnter(to,from,next){ 
 		      next(vm=>vm.setData())

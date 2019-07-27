@@ -67,14 +67,14 @@ define(["lib/text!./view.html","./components/base",
 				  this.showFavorites = false;
 				  this.check(userId);
 				  this.$f7.toast.create({
-					  text: '删除成功',
+					  text: '移除收藏夹成功',
 					  position: 'center',
 					  closeTimeout: 2000
 				  }).open();
 			  }else
 			  {
 				  this.$f7.toast.create({
-					  text: '删除失败',
+					  text: '移除收藏夹失败',
 					  position: 'center',
 					  closeTimeout: 2000
 				  }).open();  
