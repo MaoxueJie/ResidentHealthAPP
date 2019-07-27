@@ -12,7 +12,8 @@
 	  </div>
 	</div>
 	<div class="page-content infinite-scroll-content"> 
-			<div class="list users-list" style="margin-top: 17px;">
+	        <div class="block-title" style="margin-top:25px;text-align: center;" v-if="users.length==0">收藏夹为空</div> 
+			<div class="list users-list" style="margin-top: 17px;" v-if="users.length!=0">
 		      <ul>
 		        <li v-for="user in users">
 					<a v-on:click="detail(user)" class="item-link">
