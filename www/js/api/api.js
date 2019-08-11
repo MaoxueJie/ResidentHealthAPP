@@ -63,7 +63,17 @@ define(["lib/axios.min","lib/qs"],function(axios,Qs){
 	const getMsgs =  params => { return axios.get(`${base}msgs`, {params:params}).then(res => res);};
 	const getMsgById =  params => { return axios.get(`${base}msg/get`, {params:params}).then(res => res);};
 	
-	return {login,getUser,changePwd,getSicks,getBase,getLiving,getPhy,getPsy,getSick,getFavoriteSicks,checkFavorites,addFavorites,removeFavorites,test,getLivingDate,getLivingId,getPhyDate,getPhyId,getPsyDate,getPsyId,getMsgs,getMsgById};
+	const addDoc = params => { return axios.post(`${base}add`, params,
+			   {
+					transformRequest: [function (data) {
+					    data = Qs.stringify(data)
+					    return data;
+				    }]
+			   }
+			  ).then(res => res);
+			};
+	
+	return {login,getUser,changePwd,getSicks,getBase,getLiving,getPhy,getPsy,getSick,getFavoriteSicks,checkFavorites,addFavorites,removeFavorites,test,getLivingDate,getLivingId,getPhyDate,getPhyId,getPsyDate,getPsyId,getMsgs,getMsgById,addDoc};
 	
 	
 });
