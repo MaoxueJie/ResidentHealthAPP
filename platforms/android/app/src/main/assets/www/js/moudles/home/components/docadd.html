@@ -1,0 +1,60 @@
+<div  class="page">
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <div class="left">
+	    	<a v-on:click="back" href="#" class="link color-white">
+              <i class="icon icon-back color-white"></i>
+              <span>返回</span>
+            </a>
+	    </div>
+	    <div class="center title">添加医生</div>
+	    <div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	  </div>
+	</div>
+	<div class="page-content"> 
+		<div class="list inline-labels no-hairlines-md" style="margin-top:20px">
+		  <ul>
+		    <li class="item-content item-input">
+		      <div class="item-inner" style="margin-left:5px">
+		        <div class="item-title item-label" style="width:30%;">手机号</div>
+		        <div class="item-input-wrap">
+		          <input v-model="mobile" type="number" placeholder="请填写手机号">
+		          <span class="input-clear-button"></span>
+		        </div>
+		      </div>
+		     </li>
+		     <li class="item-content item-input">
+		      <div class="item-inner" style="margin-left:5px">
+		        <div class="item-title item-label" style="width:30%;">姓名</div>
+		        <div class="item-input-wrap">
+		          <input v-model="name" type="text" placeholder="请填写姓名">
+		          <span class="input-clear-button"></span>
+		        </div>
+		      </div>
+		     </li>
+		     <li class="item-content item-input">
+		      <div class="item-inner" style="margin-left:5px">
+		        <div class="item-title item-label" style="width:30%;">职务/职称</div>
+		        <div class="item-input-wrap">
+		          <input v-model="jobTitle" type="text" placeholder="请填写职务/职称">
+		          <span class="input-clear-button"></span>
+		        </div>
+		      </div>
+		     </li>
+		     <li class="item-content item-input">
+		      <div class="item-inner" style="margin-left:5px">
+		        <div class="item-title item-label" style="width:30%;">单位</div>
+		        <div class="item-input-wrap">
+		          <input v-model="unit" type="text" placeholder="请填所在单位">
+		          <span class="input-clear-button"></span>
+		        </div>
+		      </div>
+		     </li>
+		    </ul>
+		 </div>
+		<div class="content-block">
+			<a href="#" v-on:click="add" class="color-teal button-fill button-big button-raised button">添加</a>
+		</div> 
+	</div>
+    </div>
+</div>

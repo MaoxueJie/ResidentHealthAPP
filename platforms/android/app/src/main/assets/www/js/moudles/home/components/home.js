@@ -31,6 +31,9 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
        about(){
     	   this.$router.push("/about");
        },
+       adddoc(){
+    	   this.$router.push("/docadd");
+       },
        favorites(){
     	   this.$router.push("/favorites");
        },
@@ -165,6 +168,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
 	  				  this.name = res.data.data.name;
 	  				  this.jobTitle = res.data.data.jobTitle;
 	  				  this.unit = res.data.data.unit;
+	  				  this.admin = res.data.data.admin;
 	  				  this.qr = res.data.data.qr;
     	    	});
     	    	localStorage.setItem("currentDataUser",localStorage.getItem("token"))
@@ -182,6 +186,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
   	  				  this.name = res.data.data.name;
   	  				  this.jobTitle = res.data.data.jobTitle;
   	  				  this.unit = res.data.data.unit;
+  	  				  this.admin = res.data.data.admin;
   	  				  this.qr = res.data.data.qr;
     	    		});
     	    	}
@@ -200,6 +205,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
 		      name:'姓名',
 		      jobTitle:'',
 		      unit:'',
+		      admin:null,
 		      qr:'',
 		      searchable:true,
 		      users:[],
