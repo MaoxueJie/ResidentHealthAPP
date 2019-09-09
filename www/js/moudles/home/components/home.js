@@ -115,6 +115,9 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
 	    				 app.infiniteScroll.destroy('.sicks-infinite-scroll');
 	    	    		 $$('.sicks_preloader').remove();
 	    			   }		   
+	    		   }else{
+	    			   app.infiniteScroll.destroy('.sicks-infinite-scroll');
+	    	    	   $$('.sicks_preloader').remove();
 	    		   }
 
 	    		   this.loading = false;
