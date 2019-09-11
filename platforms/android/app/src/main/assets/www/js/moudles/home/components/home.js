@@ -1,4 +1,4 @@
-define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMsgs,test}){
+define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMsgs,getLink,test}){
 	
 	var methods = {
 	   route(name){
@@ -18,7 +18,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
     	   {
     		   var iframeDiv = document.getElementById("study");
     		   if (!iframeDiv.innerHTML)
-    			   iframeDiv.innerHTML = "<iframe style='width:100%;height:100%;margin0;border:0' src='http://pku_ehealth.baiduux.com/h5/cfbff22c-82be-d15c-1dea-6aba6fb1e276.html'></iframe>";
+    			   iframeDiv.innerHTML = "<iframe style='width:100%;height:100%;margin0;border:0' src='"+this.link+"'></iframe>";
     	   }
        },
        logout(){
@@ -229,6 +229,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
 		      msgMax:0,
 		      msgMin:0,
 		      msgLoading:false,
+		      link:'http://pku_ehealth.baiduux.com/h5/cfbff22c-82be-d15c-1dea-6aba6fb1e276.html',
 		    };
 		  },
 		  watch: {
@@ -321,6 +322,12 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
 	    		  localStorage.removeItem("msg");
 	    		  this.$router.push({path:"/msg",query:{msgId:msgId}});
 	    	  }
+	    	  
+	    	  getLink().then(res=>{ 
+	    		  if (res.data.success){
+	    			  that.link = res.data.data;
+	    		  }
+	    	  });
 		  },
 		  beforeRouteEnter(to,from,next){ 
 		      next(vm=>vm.setData())
