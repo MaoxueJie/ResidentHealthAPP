@@ -73,7 +73,16 @@ define(["lib/axios.min","lib/qs"],function(axios,Qs){
 			  ).then(res => res);
 			};
 	const getLink =  params => { return axios.get(`${base}getLink`, {params:params}).then(res => res);};
-	return {login,getUser,changePwd,getSicks,getBase,getLiving,getPhy,getPsy,getSick,getFavoriteSicks,checkFavorites,addFavorites,removeFavorites,test,getLivingDate,getLivingId,getPhyDate,getPhyId,getPsyDate,getPsyId,getMsgs,getMsgById,addDoc,getLink};
+	const updateLink = params => { return axios.post(`${base}updateLink`, params,
+			   {
+						transformRequest: [function (data) {
+						    data = Qs.stringify(data)
+						    return data;
+					    }]
+				   }
+				  ).then(res => res);
+				};
+	return {login,getUser,changePwd,getSicks,getBase,getLiving,getPhy,getPsy,getSick,getFavoriteSicks,checkFavorites,addFavorites,removeFavorites,test,getLivingDate,getLivingId,getPhyDate,getPhyId,getPsyDate,getPsyId,getMsgs,getMsgById,addDoc,getLink,updateLink};
 	
 	
 });

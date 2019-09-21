@@ -1,0 +1,31 @@
+<div  class="page">
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <div class="left">
+	    	<a v-on:click="back" href="#" class="link color-white">
+              <i class="icon icon-back color-white"></i>
+              <span>返回</span>
+            </a>
+	    </div>
+	    <div class="center title">外部链接</div>
+	    <div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	  </div>
+	</div>
+	<div class="page-content"> 
+		<div class="list inline-labels no-hairlines-md" style="margin-top:20px">
+		  <ul>
+		    <li class="item-content item-input">
+		      <div class="item-inner" style="margin-left:5px">
+		        <div class="item-input-wrap">
+		          <textarea v-model="link" ></textarea>
+		        </div>
+		      </div>
+		     </li>
+		    </ul>
+		 </div>
+		<div class="content-block">
+			<a href="#" v-on:click="update" class="color-teal button-fill button-big button-raised button">修改</a>
+		</div> 
+	</div>
+    </div>
+</div>

@@ -34,6 +34,9 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
        adddoc(){
     	   this.$router.push("/docadd");
        },
+       updatelink(){
+    	   this.$router.push("/link");
+       },
        favorites(){
     	   this.$router.push("/favorites");
        },
