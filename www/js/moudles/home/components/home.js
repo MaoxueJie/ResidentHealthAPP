@@ -111,7 +111,7 @@ define(["lib/text!./home.html","api/api"],function(view, {getUser,getSicks,getMs
 	    		   if (res.data.success){
 	    			   that.page ++;
 	    			   for(var i=0;i<res.data.data.length;i++){
-	    				   that.users.push({name:res.data.data[i].mobile,sex:res.data.data[i].gender?(res.data.data[i].gender==1?'male':res.data.data[i].gender==2?'female':'user-o'):'user-o',id:res.data.data[i].userId,age:res.data.data[i].age});
+	    				   that.users.push({name:res.data.data[i].name?res.data.data[i].name:res.data.data[i].mobile,sex:res.data.data[i].gender?(res.data.data[i].gender==1?'male':res.data.data[i].gender==2?'female':'user-o'):'user-o',id:res.data.data[i].userId,age:res.data.data[i].age});
 	    			   }
 	    			   if (res.data.data.length<that.size)
 	    			   {
