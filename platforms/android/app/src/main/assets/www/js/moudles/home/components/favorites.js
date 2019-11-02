@@ -4,7 +4,7 @@ define(["lib/text!./favorites.html","api/api"],function(view,{getFavoriteSicks})
 		   this.$router.back();
 	   }, 
 	   detail(user){
-    	   this.$router.push({path:"/detail",query:{mobile:user.name,userId:user.id}});
+    	   this.$router.push({path:"/detail",query:{mobile:user.mobile,userId:user.id}});
        },
 	   getSicks(){
     	   var app = this.$f7;
@@ -22,7 +22,7 @@ define(["lib/text!./favorites.html","api/api"],function(view,{getFavoriteSicks})
 	    		   if (res.data.success){
 	    			   that.page ++;
 	    			   for(var i=0;i<res.data.data.length;i++){
-	    				   that.users.push({name:res.data.data[i].mobile,sex:res.data.data[i].gender?(res.data.data[i].gender==1?'male':res.data.data[i].gender==2?'female':'user-o'):'user-o',id:res.data.data[i].userId,age:res.data.data[i].age});
+	    				   that.users.push({mobile:res.data.data[i].mobile,name:res.data.data[i].name?res.data.data[i].name:res.data.data[i].mobile,sex:res.data.data[i].gender?(res.data.data[i].gender==1?'male':res.data.data[i].gender==2?'female':'user-o'):'user-o',id:res.data.data[i].userId,age:res.data.data[i].age});
 	    			   }
 	    			   if (that.page>10 || res.data.data.length<that.size)
 	    			   {

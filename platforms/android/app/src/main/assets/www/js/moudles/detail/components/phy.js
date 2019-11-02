@@ -3,10 +3,13 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 	   back(){
 		   this.$router.back();
 	   },
-	   setData(){
+	   setData(type){
 			  let param = {
-				userId:this.$route.query.userId
+				userId:this.$route.query.userId,
+				type:type?type:0,
 			  }
+			  this.type = type?type:0;
+			  this.noDataTip = '加载中...';
 			  /*
 			  getPhy(param).then(res=>{
 				  //console.log(res);
@@ -17,8 +20,10 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 			  });*/
 			  
 			  getPhyDate(param).then(res=>{
+				  this.noDataTip = '无相关数据';
 				  if (res.data.data)
 				  {
+					  this.charts = true;
 					  this.dates = res.data.data;
 					  var dateArray = res.data.data.map(function(val){
 						  return val.dateStr;
@@ -107,6 +112,49 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							};
 					  this.echarts.weightChart.setOption(weightOption);
 					  console.log(this.echarts.weightChart);
+					  
+					  var bmis = res.data.data.map(function(val){return val.bmi}).reverse()
+					  if (this.echarts.bmiChart)
+					  {
+						  this.echarts.bmiChart.clear();
+					  }else
+					  {
+						  this.echarts.bmiChart = echarts.init(document.getElementById('bmi'));
+					  }
+					  var bmiOption = {
+							    title: {
+							        text: 'BMI'
+							    },
+							    tooltip: {
+							        trigger: 'axis'
+							    },
+							    grid: {
+							        left: '3%',
+							        right: '11%',
+							        bottom: '3%',
+							        containLabel: true
+							    },
+							    xAxis: {
+							        type: 'category',
+							        boundaryGap: false,
+							        data: dateArray,
+							    },
+							    yAxis: {
+							    	type: 'value',
+							    	axisLabel: {
+							            formatter:'{value} kg/m²'
+							        },
+							    },
+							    series: [
+							        {
+							            name:'BMI',
+							            type:'line',
+							            data:bmis
+							        }
+							    ]
+							};
+					  this.echarts.bmiChart.setOption(bmiOption);
+					  console.log(this.echarts.bmiChart);
 					  
 					  var bloodPressureVal5 = res.data.data.map(function(val){return val.bloodPressureVal5}).reverse()
 					  var bloodPressureVal6 = res.data.data.map(function(val){return val.bloodPressureVal6}).reverse()
@@ -286,6 +334,10 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 							    ]
 							};
 					  this.echarts.bloodLipidChart.setOption(bloodLipidOption);
+				  }else
+				  {
+					  this.dates = [];
+					  this.charts = false;
 				  }
 			  });
 	   },
@@ -317,10 +369,13 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 		      echarts:{
 		    	  weightChart:null,
 		    	  heightChart:null,
+		    	  bmiChart:null,
 		    	  bloodPressureChart:null,
 		    	  bloodSugarChart:null,
 		    	  bloodLipidChart:null,
-		      }
+		      },
+		      type:0,
+		      noDataTip:'无相关数据'
 		    };
 		  },
 		  computed: {
