@@ -12,12 +12,22 @@
 	  </div>
 	</div>
 	<div class="page-content"> 
-	    <div class="toolbar tabbar tabbar-scrollable toolbar-top" style="top:10px">
+		<p class="segmented segmented-raised" style="margin: 20px 10px 5px 10px">
+			    <button :class="type==0?'button button-active':'button'" v-on:click="setData(0)">全部</button>
+			    <button :class="type==1?'button button-active':'button'" v-on:click="setData(1)">近一周</button>
+			    <button :class="type==2?'button button-active':'button'" v-on:click="setData(2)">近一月</button>
+		</p>
+		<p v-if="dates.length<=0" style="text-align: center;">
+			{{noDataTip}}
+		</p>
+	    <div class="toolbar tabbar tabbar-scrollable toolbar-top" :style="dates.length>0?'display:block;top:0;':'display:none;top:0;'">
 		    <div class="toolbar-inner">
-		      <a href="#tab" class="tab-link tab-link-active" v-on:click="getPsy()">动态结果</a>
+		      <a href="#tab" :class="charts?'tab-link tab-link-active':'tab-link'" v-on:click="getPsy()">动态结果</a>
 		      <template v-for="date in dates">
 		      	<a :href="'#tab'+date.id" class="tab-link" v-on:click="getPsy(date.id)">{{date.dateStr}}</a>
 		      </template>
+		      <a class="tab-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 		    </div>
 		</div>
 		<div class="tabs">
@@ -27,11 +37,11 @@
 		      </template>
 		</div> 
 		<div :style="style">
-			<div id="gad7" style="width:100%;height:150px;"></div>
-			<div id="phq9" style="width:100%;height:150px;"></div>
-			<div id="ad8" style="width:100%;height:150px;"></div>
+			<div id="gad7" style="width:320px;height:150px;"></div>
+			<div id="phq9" style="width:320px;height:150px;"></div>
+			<div id="ad8" style="width:320px;height:150px;"></div>
 		</div>
-		<div v-if="!charts">
+		<div v-if="!charts && dates.length>0">
 			<div class="block-title" style="margin-top:15px">情绪筛查量表1<br>在过去的两周里, 你生活中以下症状出现的频率有多少？</div> 
 			<form class="list" style="margin-bottom:0">
 				<ul>

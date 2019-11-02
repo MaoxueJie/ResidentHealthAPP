@@ -3,10 +3,13 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 	   back(){
 		   this.$router.back();
 	   },
-	   setData(){
+	   setData(type){
 			  let param = {
-				userId:this.$route.query.userId
+				userId:this.$route.query.userId,
+				type:type?type:0,
 			  }
+			  this.type = type?type:0;
+			  this.noDataTip = '加载中...';
 			  /*
 			  getPsy(param).then(res=>{
 				  //console.log(res);
@@ -16,15 +19,17 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  this.psy = "";
 			  });*/
 			  getPsyDate(param).then(res=>{
+				  this.noDataTip = '无相关数据';
 				  if (res.data.data)
 				  {
+					  this.charts = true;
 					  this.dates = res.data.data;
 					  var dateArray = res.data.data.map(function(val){
 						  return val.dateStr;
 					  }).reverse();
 					  var gad7s = res.data.data.map(function(val){return val.gad7Score}).reverse()
 					  //var gad7s = res.data.data.map(function(val){return [val.gad7Score,val.dateStr]}).reverse()
-					  if (this.echarts.gad7Chart)
+					  if (this.echarts.gad7Chart && echarts.getInstanceByDom(document.getElementById('gad7')))
 					  {
 						  this.echarts.gad7Chart.clear();
 					  }else
@@ -137,7 +142,7 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  
 					  var phq9s = res.data.data.map(function(val){return val.phq9Score}).reverse()
 					  //var phq9s = res.data.data.map(function(val){return [val.phq9Score,val.dateStr]}).reverse()
-					  if (this.echarts.phq9Chart)
+					  if (this.echarts.phq9Chart && echarts.getInstanceByDom(document.getElementById('phq9')))
 					  {
 						  this.echarts.phq9Chart.clear();
 					  }else
@@ -249,7 +254,7 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 					  
 					  var ad8s = res.data.data.map(function(val){return val.ad8Score}).reverse()
 					  //var ad8s = res.data.data.map(function(val){return [val.ad8Score,val.dateStr]}).reverse()
-					  if (this.echarts.ad8Chart)
+					  if (this.echarts.ad8Chart && echarts.getInstanceByDom(document.getElementById('ad8')))
 					  {
 						  this.echarts.ad8Chart.clear();
 					  }else
@@ -358,6 +363,10 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 							    ]
 							};*/
 					  this.echarts.ad8Chart.setOption(ad8Option);
+				  }else
+				  {
+					  this.dates = [];
+					  this.charts = false;
 				  }
 			  });
 	   },
@@ -389,7 +398,9 @@ define(["lib/text!./psy.html","lib/echarts.min","api/api"],function(view,echarts
 		    	  gad7Chart:null,
 		    	  phq9Chart:null,
 		    	  ad8Chart:null,
-		      }
+		      },
+		      type:0,
+		      noDataTip:'无相关数据'
 		    };
 		  },
 		  computed: {

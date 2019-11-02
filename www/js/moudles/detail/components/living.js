@@ -3,10 +3,13 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 	   back(){
 		   this.$router.back();
 	   },
-	   setData(){
-			  let param = {
-				userId:this.$route.query.userId
+	   setData(type){
+		      let param = {
+				userId:this.$route.query.userId,
+				type:type?type:0,
 			  }
+			  this.type = type?type:0;
+			  this.noDataTip = '加载中...';
 			  /*
 			  getLiving(param).then(res=>{
 				  //console.log(res);
@@ -17,8 +20,10 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 			  });
 			  */
 			  getLivingDate(param).then(res=>{
+				  this.noDataTip = '无相关数据';
 				  if (res.data.data)
 				  {
+					  this.charts = true;
 					  this.dates = res.data.data;
 					  var dateArray = res.data.data.map(function(val){
 						  return val.dateStr;
@@ -58,7 +63,7 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 						  return val.sittingDaysRecent7Days;
 					  }).reverse();
 					  
-					  if (this.echarts.mealChart)
+					  if (this.echarts.mealChart && echarts.getInstanceByDom(document.getElementById('meal')))
 					  {
 						  this.echarts.mealChart.clear();
 					  }else
@@ -141,7 +146,7 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 							};
 					  this.echarts.mealChart.setOption(mealOption);
 					  
-					  if (this.echarts.movementChart)
+					  if (this.echarts.movementChart && echarts.getInstanceByDom(document.getElementById('movement')))
 					  {
 						  this.echarts.movementChart.clear();
 					  }else
@@ -200,6 +205,10 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 							    ]
 							};
 					  this.echarts.movementChart.setOption(movementOption);
+				  }else
+				  {
+					  this.dates = [];
+					  this.charts = false;
 				  }
 			  });
 		},
@@ -232,7 +241,9 @@ define(["lib/text!./living.html","lib/echarts.min","api/api"],function(view,echa
 		      echarts:{
 		    	  mealChart:null,
 		    	  movementChart:null,
-		      }
+		      },
+		      type:0,
+		      noDataTip:'无相关数据'
 		    };
 		  },
 		  computed: {
