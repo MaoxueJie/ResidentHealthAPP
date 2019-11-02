@@ -35,12 +35,12 @@
 		      </template>
 		</div> 
 		<div :style="style">
-			<div id="height" style="width:100%;height:150px;"></div>
-			<div id="weight" style="width:100%;height:150px;"></div>
-			<div id="bmi" style="width:100%;height:150px;"></div>
-			<div id="bloodPressure" style="width:100%;height:150px;"></div>
-			<div id="bloodSugar" style="width:100%;height:150px;"></div>
-			<div id="bloodLipid" style="width:100%;height:150px;"></div>
+			<div id="height" style="width:320px;height:150px;"></div>
+			<div id="weight" style="width:320px;height:150px;"></div>
+			<div id="bmi" style="width:320px;height:150px;"></div>
+			<div id="bloodPressure" style="width:320px;height:150px;"></div>
+			<div id="bloodSugar" style="width:320px;height:150px;"></div>
+			<div id="bloodLipid" style="width:320px;height:150px;"></div>
 		</div>
 		<div v-if="!charts && dates.length>0" >
 			<form class="list" style="margin-top:10px">
@@ -70,7 +70,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">BMI</div>
 								<div class="item-input-wrap">
-									{{phy.bmistr}}
+									<span :style="phy.bmiLevel==0?'':'color:red'">{{phy.bmistr}}</span>
 								</div>
 							</div>
 						</div>
@@ -80,7 +80,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">腰围</div>
 								<div class="item-input-wrap">
-									{{phy.abdominalCircumferenceStr}}
+									<span :style="phy.abdominalCircumferenceLevel==0?'':'color:red'">{{phy.abdominalCircumferenceStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -100,7 +100,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">WHR(腰臀比)</div>
 								<div class="item-input-wrap">
-									{{phy.whrstr}}
+									<span :style="phy.WHRLevel==0?'':'color:red'">{{phy.whrstr}}</span>
 								</div>
 							</div>
 						</div>
@@ -110,7 +110,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">心率</div>
 								<div class="item-input-wrap">
-									{{phy.heartRateStr}}
+									<span :style="phy.heartRateLevel==0?'':'color:red'">{{phy.heartRateStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -120,7 +120,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">呼吸</div>
 								<div class="item-input-wrap">
-									{{phy.breatheRateStr}}
+									<span :style="phy.breatheRateLevel==0?'':'color:red'">{{phy.breatheRateStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -130,7 +130,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">体温</div>
 								<div class="item-input-wrap">
-									{{phy.temperatureStr}}
+									<span :style="phy.temperatureLevel==0?'':'color:red'">{{phy.temperatureStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -190,7 +190,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">血压值</div>
 								<div class="item-input-wrap">
-									{{phy.bloodPressureValStr}}
+									<span :style="phy.bloodPressureValLevel==0?'':'color:red'">{{phy.bloodPressureValStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -199,7 +199,12 @@
 						<div class="item-content item-input">
 							<div class="item-inner">
 								<div class="item-title item-label">血糖值</div>
-								<div class="item-input-wrap" style="white-space: pre-wrap;">{{phy.bloodSugarValStr}}</div>
+								<div class="item-input-wrap">
+									<span :style="phy.bloodSugarVal1Level==0?'':'color:red'">{{phy.bloodSugarVal1Str}}</span><br>
+									<span :style="phy.bloodSugarVal2Level==0?'':'color:red'">{{phy.bloodSugarVal2Str}}</span><br>
+									<span :style="phy.bloodSugarVal3Level==0?'':'color:red'">{{phy.bloodSugarVal3Str}}</span><br>
+									<span :style="phy.bloodSugarVal4Level==0?'':'color:red'">{{phy.bloodSugarVal4Str}}</span>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -208,7 +213,12 @@
 						<div class="item-content item-input">
 							<div class="item-inner">
 								<div class="item-title item-label">血脂值</div>
-								<div class="item-input-wrap" style="white-space: pre-wrap;">{{phy.bloodLipidValStr}}</div>
+								<div class="item-input-wrap">
+									<span :style="phy.bloodLipidVal1Level==0?'':'color:red'">{{phy.bloodLipidVal1Str}}</span><br>
+									<span :style="phy.bloodLipidVal2Level==0?'':'color:red'">{{phy.bloodLipidVal2Str}}</span><br>
+									<span :style="phy.bloodLipidVal3Level==0?'':'color:red'">{{phy.bloodLipidVal3Str}}</span><br>
+									<span :style="phy.bloodLipidVal4Level==0?'':'color:red'">{{phy.bloodLipidVal4Str}}</span>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -218,7 +228,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">血尿酸</div>
 								<div class="item-input-wrap">
-									{{phy.uricAcidValStr}}
+									<span :style="phy.uricAcidValLevel==0?'':'color:red'">{{phy.uricAcidValStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -228,7 +238,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">血氧饱和度</div>
 								<div class="item-input-wrap">
-									{{phy.bloodOxygenValStr}}
+									<span :style="phy.bloodOxygenValLevel==0?'':'color:red'">{{phy.bloodOxygenValStr}}</span>
 								</div>
 							</div>
 						</div>

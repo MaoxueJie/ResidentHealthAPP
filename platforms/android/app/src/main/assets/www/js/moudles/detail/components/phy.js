@@ -29,7 +29,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 						  return val.dateStr;
 					  }).reverse();
 					  var heights = res.data.data.map(function(val){return val.height}).reverse()
-					  if (this.echarts.heightChart)
+					  if (this.echarts.heightChart && echarts.getInstanceByDom(document.getElementById('height')))
 					  {
 						  this.echarts.heightChart.clear();
 					  }else
@@ -71,7 +71,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 					  this.echarts.heightChart.setOption(heightOption);
 					  
 					  var weights = res.data.data.map(function(val){return val.weight}).reverse()
-					  if (this.echarts.weightChart)
+					  if (this.echarts.weightChart && echarts.getInstanceByDom(document.getElementById('weight')))
 					  {
 						  this.echarts.weightChart.clear();
 					  }else
@@ -114,7 +114,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 					  console.log(this.echarts.weightChart);
 					  
 					  var bmis = res.data.data.map(function(val){return val.bmi}).reverse()
-					  if (this.echarts.bmiChart)
+					  if (this.echarts.bmiChart && echarts.getInstanceByDom(document.getElementById('bmi')))
 					  {
 						  this.echarts.bmiChart.clear();
 					  }else
@@ -159,7 +159,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 					  var bloodPressureVal5 = res.data.data.map(function(val){return val.bloodPressureVal5}).reverse()
 					  var bloodPressureVal6 = res.data.data.map(function(val){return val.bloodPressureVal6}).reverse()
 					  
-					  if (this.echarts.bloodPressureChart)
+					  if (this.echarts.bloodPressureChart && echarts.getInstanceByDom(document.getElementById('bloodPressure')))
 					  {
 						  this.echarts.bloodPressureChart.clear();
 					  }else
@@ -214,7 +214,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 					  var bloodSugarVal3 = res.data.data.map(function(val){return val.bloodSugarVal3}).reverse()
 					  var bloodSugarVal4 = res.data.data.map(function(val){return val.bloodSugarVal4}).reverse()
 					  
-					  if (this.echarts.bloodSugarChart)
+					  if (this.echarts.bloodSugarChart && echarts.getInstanceByDom(document.getElementById('bloodSugar')))
 					  {
 						  this.echarts.bloodSugarChart.clear();
 					  }else
@@ -274,7 +274,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 					  var bloodLipidVal3 = res.data.data.map(function(val){return val.bloodLipidVal3}).reverse()
 					  var bloodLipidVal4 = res.data.data.map(function(val){return val.bloodLipidVal4}).reverse()
 					  
-					  if (this.echarts.bloodLipidChart)
+					  if (this.echarts.bloodLipidChart && echarts.getInstanceByDom(document.getElementById('bloodLipid')))
 					  {
 						  this.echarts.bloodLipidChart.clear();
 					  }else
