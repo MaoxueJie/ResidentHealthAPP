@@ -24,6 +24,7 @@ define(["lib/text!./phy.html","lib/echarts.min","api/api"],function(view,echarts
 				  if (res.data.data)
 				  {
 					  this.charts = true;
+					  this.dates = [];
 					  this.dates = res.data.data;
 					  var dateArray = res.data.data.map(function(val){
 						  return val.dateStr;
