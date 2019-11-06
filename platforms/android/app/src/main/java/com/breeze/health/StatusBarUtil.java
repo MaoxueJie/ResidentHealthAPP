@@ -644,7 +644,7 @@ public class StatusBarUtil {
         for (int i = 0, count = parent.getChildCount(); i < count; i++) {
             View childView = parent.getChildAt(i);
             if (childView instanceof ViewGroup) {
-                childView.setFitsSystemWindows(true);
+                childView.setFitsSystemWindows(false);
                 ((ViewGroup) childView).setClipToPadding(true);
             }
         }

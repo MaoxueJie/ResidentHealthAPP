@@ -142,7 +142,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">血压测量频率</div>
 								<div class="item-input-wrap">
-									{{phy.bloodPressureStr}}
+									<span :style="phy.bloodPressure==1?'':'color:red'">{{phy.bloodPressureStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -152,7 +152,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">血糖测试频率</div>
 								<div class="item-input-wrap">
-									{{phy.bloodSugarStr}}
+									<span :style="phy.bloodSugar==1?'':'color:red'">{{phy.bloodSugarStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -162,7 +162,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">血脂测试频率</div>
 								<div class="item-input-wrap">
-									{{phy.bloodLipidStr}}
+									<span :style="phy.bloodLipid==1?'':'color:red'">{{phy.bloodLipidStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -172,7 +172,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">尿酸测试频率</div>
 								<div class="item-input-wrap">
-									{{phy.uricAcidStr}}
+									<span :style="phy.uricAcid==1?'':'color:red'">{{phy.uricAcidStr}}</span>
 								</div>
 							</div>
 						</div>
@@ -182,7 +182,7 @@
 							<div class="item-inner">
 								<div class="item-title item-label">血氧饱和度测试频率</div>
 								<div class="item-input-wrap">
-									{{phy.bloodOxygenStr}}
+									<span :style="phy.bloodOxygen==1?'':'color:red'">{{phy.bloodOxygenStr}}</span>
 								</div>
 							</div>
 						</div>
